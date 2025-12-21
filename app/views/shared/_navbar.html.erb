@@ -1,9 +1,9 @@
-<nav class="bg-white/90 backdrop-blur-md shadow-sm sticky top-0 z-50 w-full">
+<nav data-controller="mobile-menu" class="bg-white/90 backdrop-blur-md shadow-sm sticky top-0 z-50 w-full">
   <div class="max-w-7xl mx-auto px-6 lg:px-12">
     <div class="flex items-center justify-between h-20"> 
       <div class="flex-shrink-0">
         <%= link_to root_path, class: "text-2xl lg:text-3xl font-extrabold text-amber-800 tracking-tight" do %>
-          Hope<span class="text-amber-600">School</span>
+          Hope<span class="text-amber-600">  School</span>
         <% end %>
       </div>
 
@@ -22,11 +22,21 @@
       </div>
 
       <div class="lg:hidden">
-        <button data-action="click->mobile-menu#toggle" class="p-2 text-amber-800 hover:bg-amber-50 rounded-xl transition">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-          </svg>
-        </button>
+        <button data-action="click->mobile-menu#toggle" class="relative p-2 text-amber-800 hover:bg-amber-50 rounded-xl transition">
+  
+  <svg data-mobile-menu-target="openIcon" 
+       class="h-8 w-8 block" 
+       fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+  </svg>
+
+  <svg data-mobile-menu-target="closeIcon" 
+       class="hidden h-8 w-8" 
+       fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+  </svg>
+  
+</button>
       </div>
     </div>
   </div>
