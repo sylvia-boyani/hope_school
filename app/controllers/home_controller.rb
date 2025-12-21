@@ -4,4 +4,10 @@ class HomeController < ApplicationController
 
   def about
   end
+
+  def programs
+  end
+
+  def admissions
+  end
 end

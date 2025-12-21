@@ -1,0 +1,123 @@
+<section class="relative py-20 lg:py-32 bg-stone-50 overflow-hidden">
+  <div class="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
+    <div class="max-w-3xl">
+      <span class="inline-block px-4 py-2 rounded-full bg-amber-100 text-amber-800 text-sm font-bold uppercase tracking-widest mb-6">
+        The Hope School Standard
+      </span>
+      <h1 class="text-5xl lg:text-7xl font-extrabold text-stone-900 tracking-tight leading-none">
+        Excellence in <span class="text-amber-600">CBC Education</span>
+      </h1>
+      <p class="mt-8 text-xl text-stone-600 leading-relaxed">
+        Rooted in Christian values, we deliver the Kenyan Competency-Based Curriculum (CBC) through a lens of faith, academic rigor, and the discovery of God-given talents.
+      </p>
+      <div class="mt-10 flex flex-wrap gap-4">
+        <%= link_to "Apply for Admission", "#", class: "px-8 py-4 bg-amber-600 text-white rounded-full font-bold shadow-xl hover:bg-amber-700 transition-all transform hover:-translate-y-1" %>
+        <a href="#levels" class="px-8 py-4 bg-white text-stone-900 border border-stone-200 rounded-full font-bold shadow-sm hover:bg-stone-50 transition-all">
+          Explore Levels
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="absolute top-0 right-0 -translate-y-1/4 translate-x-1/4 w-[600px] h-[600px] bg-amber-100/50 rounded-full blur-3xl"></div>
+</section>
+
+<section class="py-24 bg-white">
+  <div class="max-w-7xl mx-auto px-6 lg:px-12">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl lg:text-4xl font-bold text-stone-900">Developing the Whole Learner</h2>
+      <p class="mt-4 text-stone-600">Integrating KICD Core Competencies with Biblical Wisdom</p>
+    </div>
+    
+    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4">
+      <% [
+        ["Communication", "chatbubble-outline"], ["Collaboration", "people-outline"], 
+        ["Critical Thinking", "bulb-outline"], ["Creativity", "color-palette-outline"],
+        ["Citizenship", "earth-outline"], ["Digital Literacy", "hardware-chip-outline"],
+        ["Self-Efficacy", "shield-checkmark-outline"]
+      ].each do |name, icon| %>
+        <div class="p-6 bg-stone-50 rounded-2xl text-center hover:bg-amber-50 transition-colors border border-stone-100">
+          <div class="text-amber-700 font-bold text-sm leading-tight"><%= name %></div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>
+
+<section id="levels" class="py-24 bg-stone-900 text-white rounded-[3rem] mx-4 lg:mx-12">
+  <div class="max-w-7xl mx-auto px-6 lg:px-12">
+    
+    <div class="grid lg:grid-cols-2 gap-16 items-center mb-32">
+      <div class="order-2 lg:order-1">
+        <div class="inline-flex items-center space-x-2 text-amber-500 mb-4">
+          <span class="h-px w-8 bg-amber-500"></span>
+          <span class="font-bold uppercase tracking-widest text-sm">PP1 to Grade 3</span>
+        </div>
+        <h3 class="text-4xl font-bold mb-6">Early Years Education (EYE)</h3>
+        <p class="text-stone-400 text-lg leading-relaxed mb-8">
+          The foundation of a lifelong journey. At this level, we emphasize wonder and discovery. Our learners engage in environmental, mathematical, and religious activities that build a strong moral and academic foundation.
+        </p>
+        <ul class="space-y-4">
+          <li class="flex items-start">
+            <span class="text-amber-500 mr-3">✔</span>
+            <span><strong>Literacy & Numeracy:</strong> Excellence in foundational skills.</span>
+          </li>
+          <li class="flex items-start">
+            <span class="text-amber-500 mr-3">✔</span>
+            <span><strong>Christian Religious Education:</strong> Biblical stories and character building.</span>
+          </li>
+          <li class="flex items-start">
+            <span class="text-amber-500 mr-3">✔</span>
+            <span><strong>Creative Arts:</strong> Discovering God's gifts through music and art.</span>
+          </li>
+        </ul>
+      </div>
+      <div class="order-1 lg:order-2 aspect-video rounded-3xl overflow-hidden shadow-2xl transition-transform hover:scale-[1.02] duration-500">
+  <%= image_tag "t21.jpeg", 
+      alt: "Students engaged in CBC play-based learning", 
+      class: "w-full h-full object-cover" %>
+</div>
+    </div>
+
+    <div class="grid lg:grid-cols-2 gap-16 items-center">
+      <div class="order-1 lg:order-2 aspect-video rounded-3xl overflow-hidden shadow-2xl transition-transform hover:scale-[1.02] duration-500">
+  <%= image_tag "t14.jpeg", 
+      alt: "Students engaged in CBC play-based learning", 
+      class: "w-full h-full object-cover" %>
+</div>
+      <div>
+        <div class="inline-flex items-center space-x-2 text-amber-500 mb-4">
+          <span class="h-px w-8 bg-amber-500"></span>
+          <span class="font-bold uppercase tracking-widest text-sm">Grade 4 to Grade 9</span>
+        </div>
+        <h3 class="text-4xl font-bold mb-6">Upper Primary & Junior School</h3>
+        <p class="text-stone-400 text-lg leading-relaxed mb-8">
+          Transitioning from "learning to read" to "reading to learn." We focus on pre-technical skills and social studies, ensuring students can apply knowledge to real-world Kenyan challenges.
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="p-6 bg-stone-800 rounded-2xl">
+            <h4 class="font-bold text-amber-500 mb-2">STEM Excellence</h4>
+            <p class="text-sm text-stone-400">Advanced Science, Tech, and Math integrated with logic and stewardship.</p>
+          </div>
+          <div class="p-6 bg-stone-800 rounded-2xl">
+            <h4 class="font-bold text-amber-500 mb-2">CSL Programs</h4>
+            <p class="text-sm text-stone-400">Community Service Learning that puts Christian faith into action.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="py-24 bg-white text-center">
+  <div class="max-w-4xl mx-auto px-6">
+    <h2 class="text-3xl font-bold text-stone-900 mb-6">Academic Rigor. Character for Life.</h2>
+    <p class="text-xl text-stone-600 leading-relaxed">
+      In the Kenyan CBC, <strong>Values-Based Education (VBE)</strong> is essential. At Hope School, we go further by ensuring these values—Love, Integrity, and Respect—are rooted in the teachings of Christ, preparing your child to be a leader of high repute.
+    </p>
+    <div class="mt-12 inline-flex items-center p-1 bg-stone-100 rounded-full">
+      <%= link_to "Download Syllabus Overview", "#", class: "px-8 py-3 bg-white text-stone-900 rounded-full font-bold shadow-sm" %>
+      <%= link_to "Book a School Tour", "#", class: "px-8 py-3 text-stone-600 font-bold hover:text-amber-700" %>
+    </div>
+  </div>
+</section>
