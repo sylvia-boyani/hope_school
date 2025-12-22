@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   get "/about", to: "home#about"
   get "/programs", to: "home#programs"
   get "/admissions", to: "home#admissions"
+  get "contact", to: "home#contact"
+  post "contact", to: "home#create_inquiry"
 
   get "up" => "rails/health#show", as: :rails_health_checkqueries
 end

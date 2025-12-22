@@ -1,0 +1,95 @@
+<section class="py-20 bg-stone-50">
+  <div class="max-w-7xl mx-auto px-6 text-center">
+    <span class="text-amber-600 font-bold uppercase tracking-widest text-sm">Get in Touch</span>
+    <h1 class="mt-4 text-4xl lg:text-6xl font-extrabold text-stone-900">We’d Love to <span class="text-amber-700">Hear From You</span></h1>
+    <p class="mt-6 text-xl text-stone-600 max-w-2xl mx-auto">
+      Have questions about the CBC curriculum or our Christian philosophy? Our team is here to help your family navigate the journey to Hope School.
+    </p>
+  </div>
+</section>
+
+<section class="py-24 bg-white">
+  <div class="max-w-7xl mx-auto px-6 lg:px-12">
+    <div class="grid lg:grid-cols-2 gap-16">
+      
+      <div>
+        <h2 class="text-3xl font-bold text-stone-900 mb-8">Visit Our Campus</h2>
+        <div class="space-y-8">
+          <div class="flex items-start">
+            <div class="flex-shrink-0 w-12 h-12 bg-amber-100 rounded-2xl flex items-center justify-center text-amber-700">
+              <i class="fas fa-map-marker-alt text-xl"></i>
+            </div>
+            <div class="ml-6">
+              <h4 class="text-lg font-bold text-stone-900">Physical Address</h4>
+              <p class="text-stone-600">Ngong Forest Rd, Opposite Southern Bypass,<br/>Nairobi, Kenya</p>
+            </div>
+          </div>
+
+          <div class="flex items-start">
+            <div class="flex-shrink-0 w-12 h-12 bg-amber-100 rounded-2xl flex items-center justify-center text-amber-700">
+              <i class="fas fa-phone-alt text-xl"></i>
+            </div>
+            <div class="ml-6">
+              <h4 class="text-lg font-bold text-stone-900">Phone & WhatsApp</h4>
+              <p class="text-stone-600">+254 726579395</p>
+              <p class="text-stone-600 text-sm italic">Available Mon-Fri, 8am - 4pm</p>
+            </div>
+          </div>
+
+          <div class="flex items-start">
+            <div class="flex-shrink-0 w-12 h-12 bg-amber-100 rounded-2xl flex items-center justify-center text-amber-700">
+              <i class="fas fa-envelope text-xl"></i>
+            </div>
+            <div class="ml-6">
+              <h4 class="text-lg font-bold text-stone-900">Email Address</h4>
+              <p class="text-stone-600">admissions@hopeschool.ac.ke</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-12 w-full h-64 bg-stone-100 rounded-3xl overflow-hidden shadow-inner flex items-center justify-center">
+           <span class="text-stone-400 font-medium"><iframe 
+           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.7616908432306!2d36.77742097411546!3d-1.3186575356605672!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f1bcfe08eaf57%3A0xa6a8344e0cf16726!2sHope%20Academy%20(Tumaini%20Hope%20Center)!5e0!3m2!1sen!2ske!4v1766411027871!5m2!1sen!2ske" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></span>
+        </div>
+      </div>
+
+      <div class="bg-stone-50 p-8 lg:p-12 rounded-[3rem] border border-stone-100 shadow-sm">
+       <h3 class="text-2xl font-bold text-stone-900 mb-6">Send an Inquiry</h3>
+
+  <%= form_with url: contact_path, method: :post, local: true, class: "space-y-6" do |f| %>
+    <div class="grid md:grid-cols-2 gap-6">
+      <div>
+        <label class="block text-sm font-bold text-stone-700 mb-2">Parent Name</label>
+        <%= f.text_field :name, placeholder: "Full Name", required: true, class: "w-full px-5 py-4 rounded-2xl border-none ring-1 ring-stone-200 focus:ring-2 focus:ring-amber-600 outline-none transition bg-white" %>
+      </div>
+      <div>
+  <label class="block text-sm font-bold text-stone-700 mb-2">Email Address</label>
+  <%= f.email_field :email, placeholder: "email@example.com", required: true, class: "w-full px-5 py-4 rounded-2xl border-none ring-1 ring-stone-200 focus:ring-2 focus:ring-amber-600 outline-none transition bg-white" %>
+</div>
+      <div>
+        <label class="block text-sm font-bold text-stone-700 mb-2">Phone Number</label>
+        <%= f.telephone_field :phone, placeholder: "+254...", required: true, class: "w-full px-5 py-4 rounded-2xl border-none ring-1 ring-stone-200 focus:ring-2 focus:ring-amber-600 outline-none transition bg-white" %>
+      </div>
+    </div>
+    
+    <div>
+      <label class="block text-sm font-bold text-stone-700 mb-2">Interested Grade</label>
+      <%= f.select :grade, 
+          ["Playgroup / PP1", "Lower Primary (Grade 1-3)", "Upper Primary (Grade 4-6)", "Junior School (Grade 7-9)"], 
+          { prompt: 'Select a Grade' }, 
+          { class: "w-full px-5 py-4 rounded-2xl border-none ring-1 ring-stone-200 focus:ring-2 focus:ring-amber-600 outline-none transition bg-white" } 
+      %>
+    </div>
+
+    <div>
+      <label class="block text-sm font-bold text-stone-700 mb-2">Your Message</label>
+      <%= f.text_area :message, rows: 4, placeholder: "Tell us about your child's needs...", required: true, class: "w-full px-5 py-4 rounded-2xl border-none ring-1 ring-stone-200 focus:ring-2 focus:ring-amber-600 outline-none transition bg-white" %>
+    </div>
+
+    <%= f.submit "Submit Inquiry", class: "w-full py-5 bg-amber-600 text-white rounded-2xl font-bold shadow-xl hover:bg-amber-700 transition transform active:scale-95 cursor-pointer" %>
+  <% end %>
+</div>
+
+    </div>
+  </div>
+</section>
