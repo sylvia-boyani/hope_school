@@ -1,0 +1,80 @@
+<footer class="bg-stone-900 text-stone-300 pt-20 pb-10">
+  <div class="max-w-7xl mx-auto px-6 lg:px-12">
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+      
+      <div class="space-y-6">
+        <div class="text-2xl font-extrabold text-white tracking-tight">
+          Hope<span class="text-amber-500">School</span>
+        </div>
+        <p class="text-sm leading-relaxed text-stone-400">
+          A nurturing School dedicated to academic excellence and the holistic development of every learner through the Kenyan CBC curriculum.
+        </p>
+        <div class="flex space-x-4">
+          <a href="#" class="w-10 h-10 rounded-full bg-stone-800 flex items-center justify-center hover:bg-amber-600 transition-colors">
+            <i class="fab fa-facebook-f text-white"></i>
+          </a>
+          <a href="#" class="w-10 h-10 rounded-full bg-stone-800 flex items-center justify-center hover:bg-amber-600 transition-colors">
+            <i class="fab fa-instagram text-white"></i>
+          </a>
+        </div>
+      </div>
+
+      <div>
+        <h4 class="text-white font-bold mb-6 uppercase tracking-wider text-sm">Our School</h4>
+        <ul class="space-y-4 text-sm">
+          <li><%= link_to "Home", root_path, class: "hover:text-amber-500 transition" %></li>
+          <li><%= link_to "About Our Vision", about_path, class: "hover:text-amber-500 transition" %></li>
+          <li><%= link_to "CBC Programs", programs_path, class: "hover:text-amber-500 transition" %></li>
+          <li><%= link_to "Admissions", admissions_path, class: "hover:text-amber-500 transition" %></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="text-white font-bold mb-6 uppercase tracking-wider text-sm">CBC Resources</h4>
+        <ul class="space-y-4 text-sm text-stone-400">
+          <li class="flex items-center">
+             <span class="mr-2 text-amber-600">•</span> NEMIS / UPI Portal
+          </li>
+          <li class="flex items-center">
+             <span class="mr-2 text-amber-600">•</span> KICD Curriculum
+          </li>
+          <li class="flex items-center">
+             <span class="mr-2 text-amber-600">•</span> Parent Handbooks
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="text-white font-bold mb-6 uppercase tracking-wider text-sm">Contact Us</h4>
+        <ul class="space-y-4 text-sm">
+          <li class="flex items-start">
+            <span class="text-amber-500 mr-3">📍</span>
+            <span>Opposite Southern Bypass, <br/>Nairobi, Kenya</span>
+          </li>
+          <li class="flex items-center">
+            <span class="text-amber-500 mr-3">📞</span>
+            <span>+254 722337566</span>
+          </li>
+          <li class="flex items-center">
+            <span class="text-amber-500 mr-3">📞</span>
+            <span>+254 726579395</span>
+          </li>
+          <li class="flex items-center">
+            <span class="text-amber-500 mr-3">✉️</span>
+            <span>info@hopeschool.ac.ke</span>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="pt-8 border-t border-stone-800 flex flex-col md:flex-row justify-between items-center text-xs text-stone-500">
+      <p>© <%= Date.today.year %> Hope School. All rights reserved. Pursuing Excellence for God’s Glory.</p>
+      <div class="mt-4 md:mt-0 space-x-6">
+        <a href="#" class="hover:text-white transition">Privacy Policy</a>
+        <a href="#" class="hover:text-white transition">Terms of Service</a>
+      </div>
+    </div>
+  </div>
+</footer>
