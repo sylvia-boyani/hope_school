@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
+  devise_for :users
   namespace :admin do
     root "dashboard#index"
+    get "dashboard", to: "dashboard#index"
+
+    resources :students
+    resources :teachers
+    resources :classes
   end
 
   devise_for :admins, skip: [:registrations]

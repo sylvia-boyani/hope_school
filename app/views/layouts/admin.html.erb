@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hope School Admin</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body class="bg-gray-100 min-h-screen flex">
+    <!-- Sidebar -->
+    <aside class="w-64 bg-gray-900 text-white p-6">
+      <h1 class="text-xl font-bold mb-6">Hope School</h1>
+
+      <nav class="space-y-3">
+        <%= link_to "Dashboard", admin_root_path, class: "block hover:text-blue-400" %>
+        <%= link_to "Students", "#", class: "block hover:text-blue-400" %>
+        <%= link_to "Teachers", "#", class: "block hover:text-blue-400" %>
+        <%= link_to "Classes", "#", class: "block hover:text-blue-400" %>
+
+        <div class="mt-6">
+          <%= button_to "Logout",
+              destroy_admin_session_path,
+              method: :delete,
+              class: "text-red-400 hover:text-red-300" %>
+        </div>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 p-8">
+      <%= yield %>
+    </main>
+  </body>
+</html>
