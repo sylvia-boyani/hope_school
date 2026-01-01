@@ -23,9 +23,9 @@ class HomeController < ApplicationController
     grade: params[:grade],
     message: params[:message]
   }
-  
+
   InquiryMailer.school_inquiry(params).deliver_now
-  
+
   redirect_to contact_path, notice: "Thank you! Your inquiry has been sent to our admissions team."
   end
 end

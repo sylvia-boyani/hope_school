@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2025_12_23_112257) do
+ActiveRecord::Schema[8.1].define(version: 2026_01_01_110244) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -26,6 +26,88 @@ ActiveRecord::Schema[8.1].define(version: 2025_12_23_112257) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
+  create_table "admissions", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.string "status"
+    t.bigint "student_id", null: false
+    t.datetime "updated_at", null: false
+    t.index ["student_id"], name: "index_admissions_on_student_id"
+  end
+
+  create_table "assessments", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.bigint "grade_subject_id", null: false
+    t.decimal "score"
+    t.bigint "student_id", null: false
+    t.integer "term"
+    t.datetime "updated_at", null: false
+    t.index ["grade_subject_id"], name: "index_assessments_on_grade_subject_id"
+    t.index ["student_id"], name: "index_assessments_on_student_id"
+  end
+
+  create_table "class_rooms", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.bigint "level_id", null: false
+    t.string "stream"
+    t.datetime "updated_at", null: false
+    t.index ["level_id"], name: "index_class_rooms_on_level_id"
+  end
+
+  create_table "grade_subjects", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.bigint "level_id", null: false
+    t.bigint "subject_id", null: false
+    t.datetime "updated_at", null: false
+    t.index ["level_id"], name: "index_grade_subjects_on_level_id"
+    t.index ["subject_id"], name: "index_grade_subjects_on_subject_id"
+  end
+
+  create_table "levels", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.string "name"
+    t.integer "order"
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "students", force: :cascade do |t|
+    t.string "admission_number"
+    t.bigint "class_room_id", null: false
+    t.datetime "created_at", null: false
+    t.date "date_of_birth"
+    t.string "first_name"
+    t.string "gender"
+    t.string "last_name"
+    t.datetime "updated_at", null: false
+    t.index ["class_room_id"], name: "index_students_on_class_room_id"
+  end
+
+  create_table "subjects", force: :cascade do |t|
+    t.string "code"
+    t.datetime "created_at", null: false
+    t.string "name"
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "teachers", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.string "email"
+    t.string "first_name"
+    t.string "last_name"
+    t.string "phone"
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "teaching_assignments", force: :cascade do |t|
+    t.bigint "class_room_id", null: false
+    t.datetime "created_at", null: false
+    t.bigint "subject_id", null: false
+    t.bigint "teacher_id", null: false
+    t.datetime "updated_at", null: false
+    t.index ["class_room_id"], name: "index_teaching_assignments_on_class_room_id"
+    t.index ["subject_id"], name: "index_teaching_assignments_on_subject_id"
+    t.index ["teacher_id"], name: "index_teaching_assignments_on_teacher_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.string "email", default: "", null: false
@@ -37,4 +119,15 @@ ActiveRecord::Schema[8.1].define(version: 2025_12_23_112257) do
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
+
+  add_foreign_key "admissions", "students"
+  add_foreign_key "assessments", "grade_subjects"
+  add_foreign_key "assessments", "students"
+  add_foreign_key "class_rooms", "levels"
+  add_foreign_key "grade_subjects", "levels"
+  add_foreign_key "grade_subjects", "subjects"
+  add_foreign_key "students", "class_rooms"
+  add_foreign_key "teaching_assignments", "class_rooms"
+  add_foreign_key "teaching_assignments", "subjects"
+  add_foreign_key "teaching_assignments", "teachers"
 end

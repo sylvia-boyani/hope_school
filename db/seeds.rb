@@ -7,3 +7,32 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+levels = [
+  { name: "PP1", order: 1 },
+  { name: "PP2", order: 2 },
+  { name: "Grade 1", order: 3 },
+  { name: "Grade 2", order: 4 },
+  { name: "Grade 3", order: 5 },
+  { name: "Grade 4", order: 6 },
+  { name: "Grade 5", order: 7 },
+  { name: "Grade 6", order: 8 },
+  { name: "JSS 1", order: 9 },
+  { name: "JSS 2", order: 10 },
+  { name: "JSS 3", order: 11 }
+]
+
+levels.each { |l| Level.create!(l) }
+
+subjects = %w[
+  Mathematics
+  English
+  Kiswahili
+  Science
+  Social_Studies
+  Creative_Arts
+]
+
+subjects.each do |s|
+  Subject.create!(name: s.titleize, code: s[0..3].upcase)
+end

@@ -1,0 +1,31 @@
+<div class="flex justify-between items-center mb-6">
+  <h1 class="text-2xl font-bold">Levels</h1>
+  <%= link_to "Add Level", new_admin_level_path,
+        class: "bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700" %>
+</div>
+
+<table class="w-full bg-white shadow rounded overflow-hidden">
+  <thead class="bg-gray-100">
+    <tr>
+      <th class="p-3 text-left">Order</th>
+      <th class="p-3 text-left">Level Name</th>
+      <th class="p-3 text-left">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @levels.each do |level| %>
+      <tr class="border-b last:border-0">
+        <td class="p-3"><%= level.order %></td>
+        <td class="p-3"><%= level.name %></td>
+        <td class="p-3 space-x-2">
+          <%= link_to "Edit", edit_admin_level_path(level),
+                class: "text-blue-600 hover:underline" %>
+          <%= link_to "Delete", admin_level_path(level),
+                method: :delete,
+                data: { confirm: "Are you sure?" },
+                class: "text-red-600 hover:underline" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

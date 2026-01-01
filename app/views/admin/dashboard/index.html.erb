@@ -1,23 +1,82 @@
-<h2 class="text-2xl font-bold mb-6">Admin Dashboard</h2>
+<div class="mb-8">
+  <h1 class="text-3xl font-bold text-gray-800">Dashboard</h1>
+  <p class="text-gray-500 mt-1">Overview of school activity</p>
+</div>
 
-<div class="grid grid-cols-1 md:grid-cols-4 gap-6">
-  <div class="bg-white p-6 rounded shadow">
-    <p class="text-gray-500">Students</p>
-    <p class="text-3xl font-bold">120</p>
+<!-- Stats -->
+<div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6 mb-10">
+  <% stats = [
+   { label: "Students", value: @students_count, icon: "fa-user-graduate", color: "bg-blue-600" },
+   { label: "Teachers", value: @teachers_count, icon: "fa-chalkboard-teacher", color: "bg-green-600" },
+   { label: "Class Rooms", value: @class_rooms_count, icon: "fa-school", color: "bg-purple-600" },
+   { label: "Levels", value: @levels_count, icon: "fa-layer-group", color: "bg-indigo-600" },
+   { label: "Subjects", value: @subjects_count, icon: "fa-book", color: "bg-pink-600" },
+   { label: "Pending Admissions", value: @pending_admissions, icon: "fa-hourglass-half", color: "bg-orange-600" }
+  ] %>
+
+  <% stats.each do |stat| %>
+    <div class="bg-white rounded-2xl shadow hover:shadow-lg transition p-6 flex items-center gap-4">
+      <div class="<%= stat[:color] %> text-white p-4 rounded-xl">
+        <i class="fas <%= stat[:icon] %> text-xl"></i>
+      </div>
+
+      <div>
+        <p class="text-gray-500 text-sm"><%= stat[:label] %></p>
+        <p class="text-3xl font-bold text-gray-800"><%= stat[:value] %></p>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<!-- Lower Section -->
+<div class="grid grid-cols-1 xl:grid-cols-3 gap-8">
+  <!-- Recent Admissions -->
+  <div class="xl:col-span-2 bg-white rounded-2xl shadow p-6">
+    <h2 class="text-xl font-semibold mb-4">Recent Admissions</h2>
+
+    <table class="w-full text-sm">
+      <thead>
+        <tr class="text-left text-gray-500 border-b">
+          <th class="pb-3">Student</th>
+          <th class="pb-3">Class</th>
+          <th class="pb-3">Status</th>
+          <th class="pb-3">Date</th>
+        </tr>
+      </thead>
+      <tbody>
+  <% @recent_admissions.each do |admission| %>
+    <tr class="border-b last:border-0">
+      <td class="py-3 font-medium"><%= admission.student_name %></td>
+      <td class="py-3 text-gray-600">
+        <%= admission.school_class || "Not assigned" %>
+      </td>
+      <td class="py-3">
+        <span class="px-3 py-1 rounded-full text-xs font-semibold
+          <%= admission.status == "pending" ? "bg-yellow-100 text-yellow-700" : "bg-green-100 text-green-700" %>">
+          <%= admission.status.capitalize %>
+        </span>
+      </td>
+      <td class="py-3 text-gray-500">
+        <%= admission.created_at.strftime("%d %b %Y") %>
+      </td>
+    </tr>
+  <% end %>
+</tbody>
+
+    </table>
   </div>
 
-  <div class="bg-white p-6 rounded shadow">
-    <p class="text-gray-500">Teachers</p>
-    <p class="text-3xl font-bold">18</p>
-  </div>
+  <!-- Quick Actions -->
+  <div class="bg-white rounded-2xl shadow p-6">
+    <h2 class="text-xl font-semibold mb-4">Academic Setup</h2>
 
-  <div class="bg-white p-6 rounded shadow">
-    <p class="text-gray-500">Classes</p>
-    <p class="text-3xl font-bold">9</p>
-  </div>
-
-  <div class="bg-white p-6 rounded shadow">
-    <p class="text-gray-500">Pending Admissions</p>
-    <p class="text-3xl font-bold">5</p>
+    <div class="space-y-4">
+      <%= link_to "Add Student", "#", class: "block w-full text-center bg-blue-600 text-white py-3 rounded-xl hover:bg-blue-700 transition" %>
+      <%= link_to "Add Teacher", "#", class: "block w-full text-center bg-green-600 text-white py-3 rounded-xl hover:bg-green-700 transition" %>
+      <%= link_to "Create Class", "#", class: "block w-full text-center bg-purple-600 text-white py-3 rounded-xl hover:bg-purple-700 transition" %>
+      <%= link_to "Create Level", admin_levels_path, class: "block w-full text-center bg-indigo-600 text-white py-3 rounded-xl hover:bg-indigo-700 transition" %>
+      <%= link_to "Add Subject", admin_subjects_path, class: "block w-full text-center bg-pink-600 text-white py-3 rounded-xl hover:bg-pink-700 transition" %>
+      <%= link_to "Create Class Room", admin_class_rooms_path, class: "block w-full text-center bg-purple-600 text-white py-3 rounded-xl hover:bg-purple-700 transition" %>
+    </div>
   </div>
 </div>

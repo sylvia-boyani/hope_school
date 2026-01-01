@@ -4,12 +4,15 @@ Rails.application.routes.draw do
     root "dashboard#index"
     get "dashboard", to: "dashboard#index"
 
+    resources :levels
+    resources :subjects
+    resources :class_rooms
+    resources :admissions
     resources :students
     resources :teachers
-    resources :classes
   end
 
-  devise_for :admins, skip: [:registrations]
+  devise_for :admins, skip: [ :registrations ]
 
   get "home/index"
   root "home#index"
