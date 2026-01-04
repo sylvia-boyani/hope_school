@@ -1,0 +1,15 @@
+<%= form_with model: [:admin, @class_room], local: true do |f| %>
+  <div class="mb-4">
+    <%= f.label :name, class: "block mb-1 font-semibold" %>
+    <%= f.text_field :name, class: "w-full border rounded px-3 py-2" %>
+  </div>
+
+  <div class="mb-4">
+    <%= f.label :order, class: "block mb-1 font-semibold" %>
+    <%= f.number_field :order, class: "w-full border rounded px-3 py-2" %>
+  </div>
+
+  <div>
+    <%= f.submit "Save", class: "bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700" %>
+  </div>
+<% end %>
