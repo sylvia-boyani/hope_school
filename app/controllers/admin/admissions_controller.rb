@@ -1,5 +1,5 @@
 class Admin::AdmissionsController < Admin::BaseController
-  before_action :set_admission, only: %i[show edit update destroy]
+  before_action :set_admission, only: %i[edit update destroy]
 
   def index
     @admissions = Admission.includes(:class_room).order(created_at: :desc)

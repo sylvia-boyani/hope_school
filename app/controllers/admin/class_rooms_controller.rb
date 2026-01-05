@@ -1,5 +1,5 @@
 class Admin::ClassRoomsController < Admin::BaseController
-  before_action :set_class_room, only: %i[show edit update destroy]
+  before_action :set_class_room, only: %i[edit update destroy]
 
   def index
     @class_rooms = ClassRoom.includes(:level).order("levels.order ASC, class_rooms.stream ASC")

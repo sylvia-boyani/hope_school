@@ -1,8 +1,9 @@
 class Admin::SubjectsController < Admin::BaseController
-  before_action :set_subject, only: %i[show edit update destroy]
+  before_action :set_subject, only: %i[edit update destroy]
 
   def index
-    @subjects = Subject.order(:order)
+    # Includes level so we can see if it's "Grade 1" or "Grade 7" without extra DB hits
+    @subjects = Subject.includes(:level).order("levels.name ASC, subjects.name ASC")
   end
 
   def new
@@ -10,11 +11,11 @@ class Admin::SubjectsController < Admin::BaseController
   end
 
   def create
-    @subject = Subject.new(level_params)
+    @subject = Subject.new(subject_params) # Fixed the typo here
     if @subject.save
       redirect_to admin_subjects_path, notice: "Subject created successfully."
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -24,7 +25,7 @@ class Admin::SubjectsController < Admin::BaseController
     if @subject.update(subject_params)
       redirect_to admin_subjects_path, notice: "Subject updated successfully."
     else
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 
@@ -40,6 +41,7 @@ class Admin::SubjectsController < Admin::BaseController
   end
 
   def subject_params
-    params.require(:subject).permit(:name, :order)
+    # Added :level_id so you can actually link the subject to a CBC Grade
+    params.require(:subject).permit(:name, :order, :level_id)
   end
 end

@@ -1,15 +1,21 @@
 Rails.application.routes.draw do
   devise_for :users
   namespace :admin do
+    get "students/index"
+    get "students/new"
+    get "students/edit"
+    get "teachers/index"
+    get "teachers/new"
+    get "teachers/edit"
     root "dashboard#index"
     get "dashboard", to: "dashboard#index"
 
-    resources :levels
-    resources :subjects
-    resources :class_rooms
-    resources :admissions
     resources :students
     resources :teachers
+    resources :levels
+    resources :class_rooms
+    resources :subjects
+    resources :admissions
   end
 
   devise_for :admins, skip: [ :registrations ]

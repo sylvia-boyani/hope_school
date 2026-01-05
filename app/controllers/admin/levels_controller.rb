@@ -1,5 +1,5 @@
 class Admin::LevelsController < Admin::BaseController
-  before_action :set_level, only: %i[show edit update destroy]
+  before_action :set_level, only: %i[edit update destroy]
 
   def index
     @levels = Level.order(:order)

@@ -1,0 +1,18 @@
+<%= form_with(model: [:admin, student], class: "space-y-6") do |f| %>
+  <div>
+    <%= f.label :name, "Student Full Name", class: "block font-bold mb-2" %>
+    <%= f.text_field :name, class: "w-full p-3 rounded-xl border border-stone-200" %>
+  </div>
+
+  <div>
+    <%= f.label :admission_no, "Admission Number", class: "block font-bold mb-2" %>
+    <%= f.text_field :admission_no, class: "w-full p-3 rounded-xl border border-stone-200" %>
+  </div>
+
+  <div>
+    <%= f.label :level_id, "Assign Grade", class: "block font-bold mb-2" %>
+    <%= f.collection_select :level_id, Level.all, :id, :name, { prompt: "Select Grade" }, { class: "w-full p-3 rounded-xl border border-stone-200" } %>
+  </div>
+
+  <%= f.submit "Register Student", class: "bg-stone-900 text-white px-6 py-3 rounded-xl font-bold cursor-pointer" %>
+<% end %>

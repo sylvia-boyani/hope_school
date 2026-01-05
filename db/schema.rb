@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_01_01_110244) do
+ActiveRecord::Schema[8.1].define(version: 2026_01_05_191738) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -84,8 +84,10 @@ ActiveRecord::Schema[8.1].define(version: 2026_01_01_110244) do
   create_table "subjects", force: :cascade do |t|
     t.string "code"
     t.datetime "created_at", null: false
+    t.bigint "level_id"
     t.string "name"
     t.datetime "updated_at", null: false
+    t.index ["level_id"], name: "index_subjects_on_level_id"
   end
 
   create_table "teachers", force: :cascade do |t|
@@ -94,7 +96,9 @@ ActiveRecord::Schema[8.1].define(version: 2026_01_01_110244) do
     t.string "first_name"
     t.string "last_name"
     t.string "phone"
+    t.bigint "subject_id", null: false
     t.datetime "updated_at", null: false
+    t.index ["subject_id"], name: "index_teachers_on_subject_id"
   end
 
   create_table "teaching_assignments", force: :cascade do |t|
@@ -127,6 +131,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_01_01_110244) do
   add_foreign_key "grade_subjects", "levels"
   add_foreign_key "grade_subjects", "subjects"
   add_foreign_key "students", "class_rooms"
+  add_foreign_key "subjects", "levels"
+  add_foreign_key "teachers", "subjects"
   add_foreign_key "teaching_assignments", "class_rooms"
   add_foreign_key "teaching_assignments", "subjects"
   add_foreign_key "teaching_assignments", "teachers"

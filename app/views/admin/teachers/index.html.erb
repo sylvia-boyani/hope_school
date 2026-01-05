@@ -1,0 +1,33 @@
+<div class="p-8">
+  <div class="flex justify-between items-center mb-8">
+    <h1 class="text-3xl font-bold text-stone-900">Teachers</h1>
+    <%= link_to "Add New Teacher", new_admin_teacher_path, class: "bg-stone-900 text-white px-6 py-2 rounded-lg font-bold" %>
+  </div>
+
+  <div class="bg-white rounded-[2rem] shadow-sm border border-stone-100 overflow-hidden">
+    <table class="w-full text-left">
+      <thead class="bg-stone-50 border-b border-stone-100">
+        <tr>
+          <th class="p-4 font-bold text-stone-600">Name</th>
+          <th class="p-4 font-bold text-stone-600">Subject</th>
+          <th class="p-4 font-bold text-stone-600 text-right">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @teachers.each do |teacher| %>
+          <tr class="border-b border-stone-50 hover:bg-stone-50 transition">
+            <td class="p-4 font-medium"><%= teacher.name %></td>
+            <td class="p-4">
+              <span class="px-3 py-1 bg-amber-100 text-amber-700 rounded-full text-xs font-bold uppercase">
+                <%= teacher.subject&.name || "Unassigned" %>
+              </span>
+            </td>
+            <td class="p-4 text-right">
+              <%= link_to "Edit", edit_admin_teacher_path(teacher), class: "text-amber-600 font-bold hover:underline" %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

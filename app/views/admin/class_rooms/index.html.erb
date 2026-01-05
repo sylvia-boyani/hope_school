@@ -1,6 +1,6 @@
 <div class="flex justify-between items-center mb-6">
-  <h1 class="text-2xl font-bold">Subjects</h1>
-  <%= link_to "Add Subject", new_admin_subject_path,
+  <h1 class="text-2xl font-bold">ClassRooms</h1>
+  <%= link_to "Add Subject", new_admin_class_room_path,
         class: "bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700" %>
 </div>
 
@@ -8,19 +8,21 @@
   <thead class="bg-gray-100">
     <tr>
       <th class="p-3 text-left">Order</th>
-      <th class="p-3 text-left">Subject Name</th>
+      <th class="p-3 text-left">Classroom Name</th>
       <th class="p-3 text-left">Actions</th>
     </tr>
   </thead>
-  <tbody>
-  <% @subjects.each do |subject| %>
+ <tbody>
+  <% @class_rooms.each do |class_room| %>
     <tr class="border-b last:border-0">
-      <td class="p-3 font-medium text-gray-800"><%= subject.name %></td>
-      <td class="p-3 text-gray-600"><%= subject.level&.name || "No Level Assigned" %></td>
+      <td class="p-3 font-medium"><%= class_room.name %></td>
+      <td class="p-3 text-gray-600"><%= class_room.level.name %></td>
+
       <td class="p-3 text-right space-x-3">
-        <%= link_to "Edit", edit_admin_subject_path(subject),
+        <%= link_to "Edit", edit_admin_class_room_path(class_room),
             class: "text-blue-600 hover:underline" %>
-        <%= link_to "Delete", admin_subject_path(subject),
+
+        <%= link_to "Delete", admin_class_room_path(class_room),
             method: :delete,
             data: { confirm: "Are you sure?" },
             class: "text-red-600 hover:underline" %>
@@ -28,12 +30,12 @@
     </tr>
   <% end %>
 
-  <% if @subjects.empty? %>
+  <% if @class_rooms.empty? %>
     <tr>
       <td colspan="3" class="p-6 text-center text-gray-500">
-        No subjects created yet
+        No class rooms created yet
       </td>
     </tr>
   <% end %>
-</tbody>
+ </tbody>
 </table>
