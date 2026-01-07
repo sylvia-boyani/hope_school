@@ -20,6 +20,18 @@ class Admin::LevelsController < Admin::BaseController
 
   def edit; end
 
+  def show
+    @level = Level.find(params[:id])
+    @subjects = Subject.all # All possible subjects
+  end
+
+  def update_subjects
+  @level = Level.find(params[:id])
+  # This magic line syncs the checkboxes to the database
+  @level.subject_ids = params[:subject_ids]
+  redirect_to admin_level_path(@level), notice: "Subjects updated for #{@level.name}"
+  end
+
   def update
     if @level.update(level_params)
       redirect_to admin_levels_path, notice: "Level updated successfully."

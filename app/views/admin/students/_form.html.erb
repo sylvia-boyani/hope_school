@@ -1,18 +1,75 @@
-<%= form_with(model: [:admin, student], class: "space-y-6") do |f| %>
-  <div>
-    <%= f.label :name, "Student Full Name", class: "block font-bold mb-2" %>
-    <%= f.text_field :name, class: "w-full p-3 rounded-xl border border-stone-200" %>
+<%= form_with(model: [:admin, @student], class: "space-y-6 bg-white p-8 rounded-[2rem] shadow-sm border border-stone-100") do |f| %>
+  
+  <%# Photo Upload Section - Works for New & Edit %>
+  <div class="flex items-center space-x-6 pb-6 border-b border-stone-50">
+    <div class="shrink-0">
+      <% if @student.photo.attached? %>
+        <%= image_tag @student.photo, class: "h-20 w-20 object-cover rounded-2xl ring-4 ring-stone-50 shadow-sm" %>
+      <% else %>
+        <div class="h-20 w-20 rounded-2xl bg-stone-100 flex items-center justify-center text-stone-400 border-2 border-dashed border-stone-200">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+          </svg>
+        </div>
+      <% end %>
+    </div>
+    <label class="block">
+      <span class="block text-sm font-bold text-stone-700 mb-1">Student Photograph</span>
+      <%= f.file_field :photo, class: "block w-full text-xs text-stone-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-xs file:font-semibold file:bg-amber-50 file:text-amber-700 hover:file:bg-amber-100 transition-all cursor-pointer" %>
+    </label>
   </div>
 
-  <div>
-    <%= f.label :admission_no, "Admission Number", class: "block font-bold mb-2" %>
-    <%= f.text_field :admission_no, class: "w-full p-3 rounded-xl border border-stone-200" %>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <%# First Name %>
+    <div>
+      <%= f.label :first_name, class: "block text-sm font-bold text-stone-700 mb-2" %>
+      <%= f.text_field :first_name, placeholder: "e.g. Sylvia", class: "w-full px-4 py-3 rounded-xl border border-stone-200 focus:ring-2 focus:ring-amber-500 outline-none" %>
+    </div>
+
+    <%# Last Name %>
+    <div>
+      <%= f.label :last_name, class: "block text-sm font-bold text-stone-700 mb-2" %>
+      <%= f.text_field :last_name, placeholder: "e.g. Boyani", class: "w-full px-4 py-3 rounded-xl border border-stone-200 focus:ring-2 focus:ring-amber-500 outline-none" %>
+    </div>
   </div>
 
-  <div>
-    <%= f.label :level_id, "Assign Grade", class: "block font-bold mb-2" %>
-    <%= f.collection_select :level_id, Level.all, :id, :name, { prompt: "Select Grade" }, { class: "w-full p-3 rounded-xl border border-stone-200" } %>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <%# Admission Number %>
+    <div>
+      <%= f.label :admission_number, "Admission/UPI Number", class: "block text-sm font-bold text-stone-700 mb-2" %>
+      <%= f.text_field :admission_number, class: "w-full px-4 py-3 rounded-xl border border-stone-200 focus:ring-2 focus:ring-amber-500 outline-none" %>
+    </div>
+
+    <%# Level %>
+    <div>
+      <%= f.label :level_id, "Assign Grade/Level", class: "block text-sm font-bold text-stone-700 mb-2" %>
+      <%= f.collection_select :level_id, Level.all, :id, :name, { prompt: "Select Level" }, { class: "w-full px-4 py-3 rounded-xl border border-stone-200 focus:ring-2 focus:ring-amber-500 outline-none bg-white" } %>
+    </div>
   </div>
 
-  <%= f.submit "Register Student", class: "bg-stone-900 text-white px-6 py-3 rounded-xl font-bold cursor-pointer" %>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <%# Date of Birth %>
+    <div>
+      <%= f.label :date_of_birth, class: "block text-sm font-bold text-stone-700 mb-2" %>
+      <%= f.date_field :date_of_birth, class: "w-full px-4 py-3 rounded-xl border border-stone-200 focus:ring-2 focus:ring-amber-500 outline-none" %>
+    </div>
+
+    <%# Gender %>
+    <div>
+      <%= f.label :gender, class: "block text-sm font-bold text-stone-700 mb-2" %>
+      <%= f.select :gender, ["Male", "Female", "Other"], { prompt: "Select Gender" }, { class: "w-full px-4 py-3 rounded-xl border border-stone-200 focus:ring-2 focus:ring-amber-500 outline-none bg-white" } %>
+    </div>
+  </div>
+
+  <%# Added Classroom Selection %>
+  <div>
+    <%= f.label :class_room_id, "Assign Classroom / Stream (Optional)", class: "block text-sm font-bold text-stone-700 mb-2" %>
+    <%= f.collection_select :class_room_id, ClassRoom.all, :id, :name, { prompt: "Select Stream" }, { class: "w-full px-4 py-3 rounded-xl border border-stone-200 focus:ring-2 focus:ring-amber-500 outline-none bg-white" } %>
+  </div>
+
+  <div class="pt-4 border-t border-stone-50 flex items-center justify-between">
+    <p class="text-xs text-stone-400 italic">Ensure the admission number is unique.</p>
+    <%= f.submit @student.new_record? ? "Register Student" : "Save Changes", class: "w-full md:w-auto bg-stone-900 text-white px-10 py-4 rounded-2xl font-bold hover:bg-stone-800 transition-all cursor-pointer shadow-lg shadow-stone-200" %>
+  </div>
+
 <% end %>
