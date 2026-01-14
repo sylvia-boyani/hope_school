@@ -9,6 +9,7 @@ class Admin::TeachersController < Admin::BaseController
 
   def new
     @teacher = Teacher.new
+    3.times { @teacher.teaching_assignments.build } # Shows 3 assignment slots
   end
 
   def edit; end
@@ -30,10 +31,10 @@ class Admin::TeachersController < Admin::BaseController
     end
   end
 
-  def destroy
-    @teacher.destroy
-    redirect_to admin_teachers_path, notice: "Teacher removed."
-  end
+ def destroy
+  @teacher.destroy
+  redirect_to admin_teachers_path, status: :see_other, notice: "Teacher account has been permanently removed."
+end
 
   private
 
@@ -41,8 +42,10 @@ class Admin::TeachersController < Admin::BaseController
     @teacher = Teacher.find(params[:id])
   end
 
-  def teacher_params
-    # We permit :subject_id here so we can assign a subject to a teacher
-    params.require(:teacher).permit(:name, :email, :phone, :bio, :subject_id)
-  end
+def teacher_params
+  params.require(:teacher).permit(
+    :first_name, :last_name, :email, :phone, :bio,
+    teaching_assignments_attributes: [:id, :subject_id, :class_room_id, :_destroy]
+  )
+end
 end

@@ -4,7 +4,7 @@
   <div class="flex items-center space-x-6 pb-6 border-b border-stone-50">
     <div class="shrink-0">
       <% if @student.photo.attached? %>
-        <%= image_tag @student.photo, class: "h-20 w-20 object-cover rounded-2xl ring-4 ring-stone-50 shadow-sm" %>
+        <%= image_tag @student.photo_thumbnail, class: "h-20 w-20 object-cover rounded-2xl ring-4 ring-stone-50 shadow-sm" %>
       <% else %>
         <div class="h-20 w-20 rounded-2xl bg-stone-100 flex items-center justify-center text-stone-400 border-2 border-dashed border-stone-200">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">

@@ -2,8 +2,7 @@ class Admin::SubjectsController < Admin::BaseController
   before_action :set_subject, only: %i[edit update destroy]
 
   def index
-    # Includes level so we can see if it's "Grade 1" or "Grade 7" without extra DB hits
-    @subjects = Subject.includes(:level).order("levels.name ASC, subjects.name ASC")
+    @subjects = Subject.includes(:levels).all
   end
 
   def new
@@ -11,7 +10,7 @@ class Admin::SubjectsController < Admin::BaseController
   end
 
   def create
-    @subject = Subject.new(subject_params) # Fixed the typo here
+    @subject = Subject.new(subject_params)
     if @subject.save
       redirect_to admin_subjects_path, notice: "Subject created successfully."
     else

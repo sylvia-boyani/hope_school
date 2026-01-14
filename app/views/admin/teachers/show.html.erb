@@ -1,0 +1,27 @@
+<h1><%= @teacher.name %></h1>
+<p>Email: <%= @teacher.email %></p>
+
+<h3>Current Teaching Assignments</h3>
+<ul>
+  <% @teacher.teaching_assignments.each do |assignment| %>
+    <li>
+      <%= assignment.subject.name %> in <%= assignment.class_room.stream %>
+      <%= button_to "Remove", admin_teaching_assignment_path(assignment), method: :delete %>
+    </li>
+  <% end %>
+</ul>
+
+<hr>
+
+<h3>Add New Assignment</h3>
+<%= form_with(model: [:admin, TeachingAssignment.new]) do |f| %>
+  <%= f.hidden_field :teacher_id, value: @teacher.id %>
+  
+  <%= f.label :subject_id %>
+  <%= f.collection_select :subject_id, Subject.all, :id, :name %>
+
+  <%= f.label :class_room_id %>
+  <%= f.collection_select :class_room_id, ClassRoom.all, :id, :stream %>
+
+  <%= f.submit "Assign" %>
+<% end %>

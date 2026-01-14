@@ -1,7 +1,13 @@
 class Assessment < ApplicationRecord
   belongs_to :student
-  belongs_to :grade_subject
+  belongs_to :subject
+  belongs_to :level
 
-  validates :score, presence: true
-  validates :term, inclusion: { in: [ 1, 2, 3 ] }
+  # CBC Performance Levels
+  PERFORMANCE_LEVELS = [
+    ['Exceeding Expectations (EE)', 'EE'],
+    ['Meeting Expectations (ME)', 'ME'],
+    ['Approaching Expectations (AE)', 'AE'],
+    ['Below Expectations (BE)', 'BE']
+  ]
 end

@@ -3,7 +3,7 @@ class Admin::StudentsController < Admin::BaseController
   before_action :set_student, only: %i[show edit update destroy]
 
   def index
-    @students = Student.includes(:level).order(created_at: :desc)
+    @students = Student.includes(class_room: :level).order(created_at: :desc)
   end
 
   def show
@@ -51,7 +51,7 @@ class Admin::StudentsController < Admin::BaseController
     :admission_number, 
     :date_of_birth, 
     :gender, 
-    :level_id,
+    # :level_id,
     :class_room_id,
     :photo
   )

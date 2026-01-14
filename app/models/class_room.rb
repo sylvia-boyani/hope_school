@@ -4,4 +4,8 @@ class ClassRoom < ApplicationRecord
   has_many :students
   has_many :teaching_assignments
   has_many :teachers, through: :teaching_assignments
+
+  def grade_and_stream
+    "#{level.name} - #{stream}"
+  end
 end

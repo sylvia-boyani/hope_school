@@ -18,7 +18,7 @@
   <div class="flex items-center space-x-6 pb-6 border-b border-stone-50">
     <div class="shrink-0">
       <% if @student.photo.attached? %>
-        <%= image_tag @student.photo, class: "h-20 w-20 object-cover rounded-2xl ring-4 ring-stone-50" %>
+        <%= image_tag @student.photo_thumbnail, class: "h-20 w-20 object-cover rounded-2xl ring-4 ring-stone-50" %>
       <% else %>
         <div class="h-20 w-20 rounded-2xl bg-stone-100 flex items-center justify-center text-stone-400">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -72,9 +72,17 @@
     </div>
 
     <div>
-      <%= f.label :class_room_id, "Classroom / Stream", class: "block text-xs font-bold uppercase text-stone-500 mb-2 ml-1" %>
-      <%= f.collection_select :class_room_id, ClassRoom.all, :id, :name, { prompt: "Optional: Assign Stream" }, { class: "w-full px-4 py-3 rounded-xl border border-stone-200 focus:ring-2 focus:ring-amber-500 outline-none transition-all bg-white" } %>
-    </div>
+  <%= f.label :class_room_id, "Classroom / Stream", class: "block text-xs font-bold uppercase text-stone-500 mb-2 ml-1" %>
+  
+  <%# We filter ClassRooms to only those belonging to this student's level %>
+  <% available_streams = @student.level_id ? ClassRoom.where(level_id: @student.level_id) : ClassRoom.all %>
+  
+  <%= f.collection_select :class_room_id, 
+      available_streams, 
+      :id, :stream, 
+      { prompt: "Select Stream" }, 
+      { class: "w-full px-4 py-3 rounded-xl border border-stone-200 focus:ring-2 focus:ring-amber-500 outline-none transition-all bg-white" } %>
+</div>
   </div>
 
   <%# 6. Action Button %>

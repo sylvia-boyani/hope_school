@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_01_07_144656) do
+ActiveRecord::Schema[8.1].define(version: 2026_01_13_135144) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -63,14 +63,17 @@ ActiveRecord::Schema[8.1].define(version: 2026_01_07_144656) do
   end
 
   create_table "assessments", force: :cascade do |t|
+    t.integer "academic_year"
     t.datetime "created_at", null: false
-    t.bigint "grade_subject_id", null: false
-    t.decimal "score"
+    t.bigint "level_id", null: false
+    t.string "status"
     t.bigint "student_id", null: false
-    t.integer "term"
+    t.bigint "subject_id", null: false
+    t.string "term"
     t.datetime "updated_at", null: false
-    t.index ["grade_subject_id"], name: "index_assessments_on_grade_subject_id"
+    t.index ["level_id"], name: "index_assessments_on_level_id"
     t.index ["student_id"], name: "index_assessments_on_student_id"
+    t.index ["subject_id"], name: "index_assessments_on_subject_id"
   end
 
   create_table "class_rooms", force: :cascade do |t|
@@ -114,20 +117,16 @@ ActiveRecord::Schema[8.1].define(version: 2026_01_07_144656) do
     t.string "first_name"
     t.string "gender"
     t.string "last_name"
-    t.bigint "level_id", null: false
     t.datetime "updated_at", null: false
     t.index ["class_room_id"], name: "index_students_on_class_room_id"
-    t.index ["level_id"], name: "index_students_on_level_id"
   end
 
   create_table "subjects", force: :cascade do |t|
     t.string "category"
     t.string "code"
     t.datetime "created_at", null: false
-    t.bigint "level_id"
     t.string "name"
     t.datetime "updated_at", null: false
-    t.index ["level_id"], name: "index_subjects_on_level_id"
   end
 
   create_table "teachers", force: :cascade do |t|
@@ -136,9 +135,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_01_07_144656) do
     t.string "first_name"
     t.string "last_name"
     t.string "phone"
-    t.bigint "subject_id", null: false
     t.datetime "updated_at", null: false
-    t.index ["subject_id"], name: "index_teachers_on_subject_id"
   end
 
   create_table "teaching_assignments", force: :cascade do |t|
@@ -167,17 +164,15 @@ ActiveRecord::Schema[8.1].define(version: 2026_01_07_144656) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "admissions", "students"
-  add_foreign_key "assessments", "grade_subjects"
+  add_foreign_key "assessments", "levels"
   add_foreign_key "assessments", "students"
+  add_foreign_key "assessments", "subjects"
   add_foreign_key "class_rooms", "levels"
   add_foreign_key "courses", "levels"
   add_foreign_key "courses", "subjects"
   add_foreign_key "grade_subjects", "levels"
   add_foreign_key "grade_subjects", "subjects"
   add_foreign_key "students", "class_rooms"
-  add_foreign_key "students", "levels"
-  add_foreign_key "subjects", "levels"
-  add_foreign_key "teachers", "subjects"
   add_foreign_key "teaching_assignments", "class_rooms"
   add_foreign_key "teaching_assignments", "subjects"
   add_foreign_key "teaching_assignments", "teachers"

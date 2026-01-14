@@ -2,12 +2,16 @@
 
 one:
   student: one
-  grade_subject: one
-  score: 9.99
-  term: 1
+  subject: one
+  level: one
+  term: MyString
+  academic_year: 1
+  status: MyString
 
 two:
   student: two
-  grade_subject: two
-  score: 9.99
-  term: 1
+  subject: two
+  level: two
+  term: MyString
+  academic_year: 1
+  status: MyString

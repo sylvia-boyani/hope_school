@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   # 1. Devise Routes
-  devise_for :users
+  # devise_for :users
   # Moving this here and ensuring we handle the "skip" properly in the views
   devise_for :admins, skip: [:registrations]
 
@@ -12,10 +12,15 @@ Rails.application.routes.draw do
     # resources already creates index, new, edit, show, create, update, destroy
     resources :students
     resources :teachers
-    resources :levels
+    resources :levels do
+      member do
+      patch :update_subjects
+      end
+    end
     resources :class_rooms
     resources :subjects
     resources :admissions
+    resources :assessments
   end
 
   # 3. Public Pages

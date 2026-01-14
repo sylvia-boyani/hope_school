@@ -32,7 +32,7 @@
       <div class="bg-white rounded-[2.5rem] p-8 shadow-sm border border-stone-100 text-center sticky top-8">
         <div class="relative inline-block mb-6">
           <% if @student.photo.attached? %>
-            <%= image_tag @student.photo, class: "w-40 h-40 rounded-[2rem] object-cover ring-8 ring-stone-50 shadow-inner" %>
+            <%= image_tag @student.photo_thumbnail, class: "w-40 h-40 rounded-[2rem] object-cover ring-8 ring-stone-50 shadow-inner" %>
           <% else %>
             <div class="w-40 h-40 rounded-[2rem] bg-amber-50 text-amber-600 flex items-center justify-center text-5xl font-bold ring-8 ring-stone-50">
               <%= @student.first_name[0] %><%= @student.last_name[0] %>
@@ -47,11 +47,11 @@
         <div class="grid grid-cols-2 gap-2">
           <div class="p-3 bg-stone-50 rounded-2xl text-center">
             <span class="block text-[10px] uppercase font-bold text-stone-400">Grade</span>
-            <span class="text-sm font-bold text-stone-700"><%= @student.level&.name || "N/A" %></span>
+            <span class="text-sm font-bold text-stone-700"><%= @student.class_room&.level&.name || "N/A" %></span>
           </div>
           <div class="p-3 bg-stone-50 rounded-2xl text-center">
             <span class="block text-[10px] uppercase font-bold text-stone-400">Stream</span>
-            <span class="text-sm font-bold text-stone-700"><%= @student.class_room&.name || "N/A" %></span>
+            <span class="text-sm font-bold text-stone-700"><%= @student.class_room&.level&.name || "N/A" %></span>
           </div>
         </div>
       </div>
@@ -62,7 +62,7 @@
       <div class="bg-white rounded-[2.5rem] p-10 shadow-sm border border-stone-100">
         <h3 class="text-lg font-bold text-stone-900 mb-8 flex items-center">
           <span class="w-8 h-8 bg-stone-900 text-white rounded-lg flex items-center justify-center mr-3 text-xs">01</span>
-          Personal Biography
+          Personal Details
         </h3>
         
         <div class="grid grid-cols-1 md:grid-cols-2 gap-y-8 gap-x-12">
@@ -98,7 +98,7 @@
       <div class="bg-stone-900 rounded-[2.5rem] p-10 shadow-xl text-white">
         <h3 class="text-lg font-bold mb-4">Academic Status</h3>
         <p class="text-stone-400 text-sm leading-relaxed">
-          Currently enrolled in <%= @student.level&.name %> under the <%= @student.class_room&.name || "General" %> stream. No disciplinary actions or attendance warnings on file.
+          Currently enrolled in <%= @student.class_room&.level&.name %> under the <%= @student.class_room&.level&.name || "General" %> stream. No disciplinary actions or attendance warnings on file.
         </p>
       </div>
     </div>

@@ -1,15 +1,20 @@
-<%= form_with model: [:admin, @teacher], local: true do |f| %>
-  <div class="mb-4">
-    <%= f.label :name, class: "block mb-1 font-semibold" %>
-    <%= f.text_field :name, class: "w-full border rounded px-3 py-2" %>
-  </div>
+<div class="min-h-screen bg-stone-50/50 py-12 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-4xl mx-auto">
+    
+    <div class="mb-8 flex items-center justify-between">
+      <div>
+        <h1 class="text-3xl font-black text-stone-900 tracking-tight">Register New Teacher</h1>
+        <p class="text-stone-500 mt-1">Create a new profile and assign initial subjects.</p>
+      </div>
+      <%= link_to admin_teachers_path, class: "text-stone-400 hover:text-stone-600 transition" do %>
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      <% end %>
+    </div>
 
-  <div class="mb-4">
-    <%= f.label :order, class: "block mb-1 font-semibold" %>
-    <%= f.number_field :order, class: "w-full border rounded px-3 py-2" %>
-  </div>
+    <%# This line tells Rails to look for _form.html.erb and put it here %>
+    <%= render "form", teacher: @teacher %>
 
-  <div>
-    <%= f.submit "Save", class: "bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700" %>
   </div>
-<% end %>
+</div>

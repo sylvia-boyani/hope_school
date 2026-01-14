@@ -4,6 +4,5 @@ class Subject < ApplicationRecord
   has_many :courses, dependent: :destroy
   has_many :levels, through: :courses
 
-  validates :level_id, presence: true
   validates :name, presence: true
 end

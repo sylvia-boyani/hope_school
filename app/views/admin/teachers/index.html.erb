@@ -18,10 +18,18 @@
           <tr class="border-b border-stone-50 hover:bg-stone-50 transition">
             <td class="p-4 font-medium"><%= teacher.name %></td>
             <td class="p-4">
-              <span class="px-3 py-1 bg-amber-100 text-amber-700 rounded-full text-xs font-bold uppercase">
-                <%= teacher.subject&.name || "Unassigned" %>
-              </span>
-            </td>
+  <% if teacher.subjects.any? %>
+    <div class="flex flex-wrap gap-1">
+      <% teacher.subjects.distinct.each do |subject| %>
+        <span class="px-3 py-1 bg-amber-100 text-amber-700 rounded-full text-xs font-bold uppercase">
+          <%= subject.name %>
+        </span>
+      <% end %>
+    </div>
+  <% else %>
+    <span class="text-stone-400 italic text-xs">Unassigned</span>
+  <% end %>
+</td>
             <td class="p-4 text-right">
               <%= link_to "Edit", edit_admin_teacher_path(teacher), class: "text-amber-600 font-bold hover:underline" %>
             </td>

@@ -12,28 +12,53 @@
       <th class="p-3 text-left">Actions</th>
     </tr>
   </thead>
-  <tbody>
+<tbody>
   <% @subjects.each do |subject| %>
-    <tr class="border-b last:border-0">
-      <td class="p-3 font-medium text-gray-800"><%= subject.name %></td>
-      <td class="p-3 text-gray-600"><%= subject.level&.name || "No Level Assigned" %></td>
+    <tr class="hover:bg-gray-50 transition-colors border-b last:border-0">
+      <%# Column 1: Category/Order (Matching your 'Order' header) %>
+      <td class="p-3 text-sm text-gray-500">
+        <span class="bg-gray-100 px-2 py-1 rounded text-[10px] font-bold uppercase">
+          <%= subject.category || "General" %>
+        </span>
+      </td>
+
+      <%# Column 2: Subject Name & Assigned Levels %>
+      <td class="p-3">
+        <div class="font-bold text-gray-800"><%= subject.name %></div>
+        
+        <%# THIS IS THE FIX FOR THE ERROR: Displaying multiple levels %>
+        <div class="flex flex-wrap gap-1 mt-1">
+          <% if subject.levels.any? %>
+            <% subject.levels.each do |level| %>
+              <span class="px-2 py-0.5 bg-amber-50 text-amber-700 rounded text-[9px] font-bold border border-amber-100 uppercase">
+                <%= level.name %>
+              </span>
+            <% end %>
+          <% else %>
+            <span class="text-[10px] text-gray-400 italic">Not assigned to any grade</span>
+          <% end %>
+        </div>
+      </td>
+
+      <%# Column 3: Actions %>
       <td class="p-3 text-right space-x-3">
         <%= link_to "Edit", edit_admin_subject_path(subject),
-            class: "text-blue-600 hover:underline" %>
+            class: "text-blue-600 hover:underline text-sm font-semibold" %>
+        
+        <%# Note: For Rails 7+, use 'data-turbo-method' instead of 'method' %>
         <%= link_to "Delete", admin_subject_path(subject),
-            method: :delete,
-            data: { confirm: "Are you sure?" },
-            class: "text-red-600 hover:underline" %>
+            data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
+            class: "text-red-600 hover:underline text-sm font-semibold" %>
       </td>
     </tr>
   <% end %>
 
   <% if @subjects.empty? %>
     <tr>
-      <td colspan="3" class="p-6 text-center text-gray-500">
-        No subjects created yet
+      <td colspan="3" class="p-10 text-center text-gray-400 italic">
+        No subjects created yet.
       </td>
     </tr>
   <% end %>
-</tbody>
+  </tbody>
 </table>

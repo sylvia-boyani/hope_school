@@ -1,9 +1,4 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-one:
-  name: MyString
-  code: MyString
-
-two:
-  name: MyString
-  code: MyString
+# test/fixtures/subjects.yml
+math:
+  name: "Mathematics"
+  code: "MATH101"
