@@ -1,4 +1,3 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 grade1_red:
-  level: grade1
-  stream: "Red"
+  stream: "Grade 1 Red"
+  level: grade_1 # This matches the label above

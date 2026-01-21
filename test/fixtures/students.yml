@@ -1,8 +1,5 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 jane:
   first_name: "Jane"
   last_name: "Doe"
   admission_number: "ADM001"
-  gender: "Female"
-  date_of_birth: 2015-01-01
-  class_room: grade1_red # This links to the fixture in class_rooms
+  class_room: grade1_red # This matches the label in class_rooms.yml

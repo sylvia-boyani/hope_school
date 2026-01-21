@@ -1,3 +1,4 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-grade1:
+grade_1:
   name: "Grade 1"
+  # 'order' is likely a column in your table based on your seeds
+  order: 3

@@ -1,9 +1,4 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-one:
-  student: one
-  status: MyString
-
-two:
-  student: two
-  status: MyString
+# test/fixtures/admissions.yml
+admission_two:
+  student: jane  # This must match the label in students.yml exactly
+  status: "active"
