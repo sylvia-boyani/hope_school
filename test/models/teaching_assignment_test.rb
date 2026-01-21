@@ -1,7 +1,9 @@
-require "test_helper"
+assignment_one:
+  teacher: teacher_one
+  class_room: grade1_red
+  subject: math # Ensure 'math' exists in test/fixtures/subjects.yml
 
-class TeachingAssignmentTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
-end
+assignment_two:
+  teacher: teacher_one
+  class_room: grade1_red
+  subject: english

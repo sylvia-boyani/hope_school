@@ -12,7 +12,7 @@ class Teacher < ApplicationRecord
     "#{first_name} #{last_name}"
   end
 
-  def grade_and_stream
-  "#{level.name} - #{stream}"
+  def assigned_classes
+    class_rooms.map { |c| "#{c.level.name} - #{c.name}" }.join(", ")
   end
 end

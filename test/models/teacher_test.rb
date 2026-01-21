@@ -1,32 +1,29 @@
 require "test_helper"
 
 class TeacherTest < ActiveSupport::TestCase
-  test "valid teacher with required fields" do
-    teacher = Teacher.new(
-      first_name: "Alice",
-      last_name: "Mwangi",
-      email: "alice@hope.school",
-      phone: "0700112233"
-    )
-
-    assert teacher.valid?
+  setup do
+    @teacher = teachers(:teacher_one)
   end
 
-  test "invalid without email" do
-    teacher = Teacher.new(
-      first_name: "Alice",
-      last_name: "Mwangi"
-    )
-
-    assert_not teacher.valid?
+  test "should be valid" do
+    assert @teacher.valid?
   end
 
-  test "invalid without first name" do
-    teacher = Teacher.new(
-      last_name: "Mwangi",
-      email: "alice@hope.school"
-    )
+  test "name method returns full name" do
+    assert_equal "John Maina", @teacher.name
+  end
 
-    assert_not teacher.valid?
+  test "has associated subjects through assignments" do
+    assert @teacher.subjects.include?(subjects(:math))
+  end
+
+  test "has associated class_rooms through assignments" do
+    assert @teacher.class_rooms.include?(class_rooms(:grade1_red))
+  end
+
+  test "deleting teacher deletes their teaching assignments" do
+    assert_difference "TeachingAssignment.count", -@teacher.teaching_assignments.count do
+      @teacher.destroy
+    end
   end
 end

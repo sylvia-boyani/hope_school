@@ -1,11 +1,5 @@
-# # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-# one:
-#   teacher: one
-#   class_room: one
-#   subject: one
-
-# two:
-#   teacher: two
-#   class_room: two
-#   subject: two
+# test/fixtures/teaching_assignments.yml
+assignment_one:
+  teacher: teacher_one # ensure this exists in teachers.yml
+  class_room: grade1_red # ensure this exists in class_rooms.yml
+  subject: math        # <--- MUST MATCH the label in subjects.yml

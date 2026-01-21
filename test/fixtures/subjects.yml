@@ -1,0 +1,8 @@
+# test/fixtures/subjects.yml
+math:
+  name: "Mathematics"
+  code: "MATH"
+
+english:
+  name: "English"
+  code: "ENGL"
