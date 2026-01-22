@@ -1,9 +1,9 @@
-assignment_one:
+math_assignment:
   teacher: teacher_one
   class_room: grade1_red
   subject: math
 
-assignment_two:
+english_assignment:
   teacher: teacher_two
   class_room: grade1_red
   subject: english
