@@ -1,5 +1,9 @@
-# test/fixtures/teaching_assignments.yml
 assignment_one:
-  teacher: teacher_one # ensure this exists in teachers.yml
-  class_room: grade1_red # ensure this exists in class_rooms.yml
-  subject: math        # <--- MUST MATCH the label in subjects.yml
+  teacher: teacher_one
+  class_room: grade1_red
+  subject: math
+
+assignment_two:
+  teacher: teacher_two
+  class_room: grade1_red
+  subject: english

@@ -1,0 +1,11 @@
+math_grade_1:
+  level: grade_1  # Matches label in levels.yml
+  subject: math      # Matches label in subjects.yml
+
+english_grade_1:
+  level: grade_1
+  subject: english
+
+math_grade_2:
+  level: grade_2
+  subject: math

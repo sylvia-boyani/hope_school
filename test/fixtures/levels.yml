@@ -1,4 +1,7 @@
 grade_1:
   name: "Grade 1"
-  # 'order' is likely a column in your table based on your seeds
   order: 3
+
+grade_2:
+  name: "Grade 2"
+  order: 4
