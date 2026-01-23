@@ -1,0 +1,38 @@
+<div class="flex justify-between items-center mb-6">
+  <h1 class="text-3xl font-bold text-gray-800">Assessments</h1>
+  <%= link_to "Record New Assessment", new_admin_assessment_path, class: "bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700" %>
+</div>
+
+<div class="bg-white rounded-2xl shadow overflow-hidden">
+  <table class="w-full text-left">
+    <thead class="bg-gray-50 border-b">
+      <tr>
+        <th class="px-6 py-4 text-sm font-semibold text-gray-600">Date</th>
+        <th class="px-6 py-4 text-sm font-semibold text-gray-600">Student</th>
+        <th class="px-6 py-4 text-sm font-semibold text-gray-600">Subject</th>
+        <th class="px-6 py-4 text-sm font-semibold text-gray-600">Level</th>
+        <th class="px-6 py-4 text-sm font-semibold text-gray-600 text-center">Score</th>
+      </tr>
+    </thead>
+    <tbody class="divide-y divide-gray-100">
+      <% @assessments.each do |assessment| %>
+        <tr class="hover:bg-gray-50 transition">
+          <td class="px-6 py-4 text-sm text-gray-500"><%= assessment.assessment_date.strftime("%d %b %Y") %></td>
+          <td class="px-6 py-4 text-sm font-medium text-gray-800"><%= assessment.student.full_name %></td>
+          <td class="px-6 py-4 text-sm text-gray-600"><%= assessment.subject.name %></td>
+          <td class="px-6 py-4 text-sm text-gray-600"><%= assessment.level.name %></td>
+          <td class="px-6 py-4 text-center">
+            <span class="px-3 py-1 rounded-full text-xs font-bold 
+              <%= case assessment.performance_level 
+                  when 'EE' then 'bg-green-100 text-green-700'
+                  when 'ME' then 'bg-blue-100 text-blue-700'
+                  when 'AE' then 'bg-yellow-100 text-yellow-700'
+                  else 'bg-red-100 text-red-700' end %>">
+              <%= assessment.performance_level %>
+            </span>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

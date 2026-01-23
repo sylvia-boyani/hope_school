@@ -1,5 +1,4 @@
 class Admin::StudentsController < Admin::BaseController
-  # Added :show to the before_action
   before_action :set_student, only: %i[show edit update destroy]
 
   def index

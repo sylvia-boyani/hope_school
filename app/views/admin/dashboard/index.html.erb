@@ -3,15 +3,15 @@
   <p class="text-gray-500 mt-1">Overview of school activity</p>
 </div>
 
-<!-- Stats -->
-<div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6 mb-10">
+<div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6 mb-10">
   <% stats = [
    { label: "Students", value: @students_count, icon: "fa-user-graduate", color: "bg-blue-600" },
    { label: "Teachers", value: @teachers_count, icon: "fa-chalkboard-teacher", color: "bg-green-600" },
+   { label: "Assessments", value: @total_assessments, icon: "fa-chart-line", color: "bg-teal-600" },
+   { label: "Pending Admissions", value: @pending_admissions, icon: "fa-hourglass-half", color: "bg-orange-600" },
    { label: "Class Rooms", value: @class_rooms_count, icon: "fa-school", color: "bg-purple-600" },
    { label: "Levels", value: @levels_count, icon: "fa-layer-group", color: "bg-indigo-600" },
-   { label: "Subjects", value: @subjects_count, icon: "fa-book", color: "bg-pink-600" },
-   { label: "Pending Admissions", value: @pending_admissions, icon: "fa-hourglass-half", color: "bg-orange-600" }
+   { label: "Subjects", value: @subjects_count, icon: "fa-book", color: "bg-pink-600" }
   ] %>
 
   <% stats.each do |stat| %>
@@ -28,55 +28,62 @@
   <% end %>
 </div>
 
-<!-- Lower Section -->
 <div class="grid grid-cols-1 xl:grid-cols-3 gap-8">
-  <!-- Recent Admissions -->
   <div class="xl:col-span-2 bg-white rounded-2xl shadow p-6">
-    <h2 class="text-xl font-semibold mb-4">Recent Admissions</h2>
+    <div class="flex justify-between items-center mb-6">
+      <h2 class="text-xl font-semibold">Recent Admissions</h2>
+      <%= link_to "View All", "#", class: "text-blue-600 text-sm hover:underline" %>
+    </div>
 
-    <table class="w-full text-sm">
-      <thead>
-        <tr class="text-left text-gray-500 border-b">
-          <th class="pb-3">Student</th>
-          <th class="pb-3">Class</th>
-          <th class="pb-3">Status</th>
-          <th class="pb-3">Date</th>
-        </tr>
-      </thead>
-      <tbody>
-  <% @recent_admissions.each do |admission| %>
-    <tr class="border-b last:border-0">
-      <td class="py-3 font-medium"><%= admission.student_name %></td>
-      <td class="py-3 text-gray-600">
-        <%= admission.school_class || "Not assigned" %>
-      </td>
-      <td class="py-3">
-        <span class="px-3 py-1 rounded-full text-xs font-semibold
-          <%= admission.status == "pending" ? "bg-yellow-100 text-yellow-700" : "bg-green-100 text-green-700" %>">
-          <%= admission.status.capitalize %>
-        </span>
-      </td>
-      <td class="py-3 text-gray-500">
-        <%= admission.created_at.strftime("%d %b %Y") %>
-      </td>
-    </tr>
-  <% end %>
-</tbody>
-
-    </table>
-  </div>
-
-  <!-- Quick Actions -->
-  <div class="bg-white rounded-2xl shadow p-6">
-    <h2 class="text-xl font-semibold mb-4">Academic Setup</h2>
-
-    <div class="space-y-4">
-      <%= link_to "Add Student", "#", class: "block w-full text-center bg-blue-600 text-white py-3 rounded-xl hover:bg-blue-700 transition" %>
-      <%= link_to "Add Teacher", "#", class: "block w-full text-center bg-green-600 text-white py-3 rounded-xl hover:bg-green-700 transition" %>
-      <%= link_to "Create Class", "#", class: "block w-full text-center bg-purple-600 text-white py-3 rounded-xl hover:bg-purple-700 transition" %>
-      <%= link_to "Create Level", admin_levels_path, class: "block w-full text-center bg-indigo-600 text-white py-3 rounded-xl hover:bg-indigo-700 transition" %>
-      <%= link_to "Add Subject", admin_subjects_path, class: "block w-full text-center bg-pink-600 text-white py-3 rounded-xl hover:bg-pink-700 transition" %>
-      <%= link_to "Create Class Room", admin_class_rooms_path, class: "block w-full text-center bg-purple-600 text-white py-3 rounded-xl hover:bg-purple-700 transition" %>
+    <div class="overflow-x-auto">
+      <table class="w-full text-sm">
+        <thead>
+          <tr class="text-left text-gray-500 border-b">
+            <th class="pb-3">Student</th>
+            <th class="pb-3">Class</th>
+            <th class="pb-3">Status</th>
+            <th class="pb-3">Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @recent_admissions.each do |admission| %>
+            <tr class="border-b last:border-0 hover:bg-gray-50 transition">
+              <td class="py-3 font-medium"><%= admission.student_name %></td>
+              <td class="py-3 text-gray-600">
+                <%= admission.school_class || "Not assigned" %>
+              </td>
+              <td class="py-3">
+                <span class="px-3 py-1 rounded-full text-xs font-semibold
+                  <%= admission.status == "pending" ? "bg-yellow-100 text-yellow-700" : "bg-green-100 text-green-700" %>">
+                  <%= admission.status.capitalize %>
+                </span>
+              </td>
+              <td class="py-3 text-gray-500">
+                <%= admission.created_at.strftime("%d %b %Y") %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
     </div>
   </div>
-</div>
+
+  <div class="bg-white rounded-2xl shadow p-6">
+    <h2 class="text-xl font-semibold mb-4">Academic Operations</h2>
+
+    <div class="space-y-3">
+      <%= link_to new_admin_assessment_path, class: "group flex items-center gap-3 w-full bg-teal-600 text-white p-3 rounded-xl hover:bg-teal-700 transition shadow-sm" do %>
+        <div class="bg-white/20 p-2 rounded-lg group-hover:scale-110 transition">
+          <i class="fas fa-plus text-sm"></i>
+        </div>
+        <span class="font-bold">Record Assessment</span>
+      <% end %>
+
+      <div class="pt-2 space-y-3">
+        <%= link_to "Add Student", "#", class: "block w-full text-center bg-gray-50 text-gray-700 py-3 rounded-xl border border-gray-200 hover:bg-blue-50 hover:text-blue-600 hover:border-blue-200 transition" %>
+        
+        <%= link_to "Add Teacher", "#", class: "block w-full text-center bg-gray-50 text-gray-700 py-3 rounded-xl border border-gray-200 hover:bg-green-50 hover:text-green-600 hover:border-green-200 transition" %>
+
+        <hr class="border-gray-100 my-2">
+
+        <h3 class="text-xs font-bold text-

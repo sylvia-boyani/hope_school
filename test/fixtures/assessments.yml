@@ -1,0 +1,13 @@
+math_term_1:
+  student: jane         
+  subject: math      
+  level: grade_1      
+  performance_level: "ME"
+  assessment_date: <%= Date.today %>
+
+english_term_1:
+  student: jane
+  subject: english
+  level: grade_1
+  performance_level: "EE"
+  assessment_date: <%= Date.today %>
