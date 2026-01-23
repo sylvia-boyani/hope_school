@@ -75,7 +75,8 @@
   <%= f.label :class_room_id, "Classroom / Stream", class: "block text-xs font-bold uppercase text-stone-500 mb-2 ml-1" %>
   
   <%# We filter ClassRooms to only those belonging to this student's level %>
-  <% available_streams = @student.level_id ? ClassRoom.where(level_id: @student.level_id) : ClassRoom.all %>
+  <% selected_level_id = @student.class_room&.level_id %>
+<% available_streams = selected_level_id ? ClassRoom.where(level_id: selected_level_id) : ClassRoom.all %>
   
   <%= f.collection_select :class_room_id, 
       available_streams, 
