@@ -18,7 +18,7 @@
       <% @assessments.each do |assessment| %>
         <tr class="hover:bg-gray-50 transition">
           <td class="px-6 py-4 text-sm text-gray-500"><%= assessment.assessment_date.strftime("%d %b %Y") %></td>
-          <td class="px-6 py-4 text-sm font-medium text-gray-800"><%= assessment.student.full_name %></td>
+          <td class="px-6 py-4 text-sm font-medium text-gray-800"><%= assessment.student.name %></td>
           <td class="px-6 py-4 text-sm text-gray-600"><%= assessment.subject.name %></td>
           <td class="px-6 py-4 text-sm text-gray-600"><%= assessment.level.name %></td>
           <td class="px-6 py-4 text-center">

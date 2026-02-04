@@ -13,13 +13,15 @@ class Student < ApplicationRecord
   def photo_thumbnail
     if photo.attached? && self.persisted?
       # saver: { subsampling: 0 } keeps the colors sharp
-      photo.variant(
-        resize_to_fill: [400, 400], 
-        convert: 'jpg', 
-        saver: { quality: 80 }
-      ).processed
+      if photo.variable?
+    photo.variant(
+      resize_to_fill: [400, 400], 
+      convert: 'jpg', 
+      saver: { quality: 80 }
+    ).processed
     else
       "https://ui-avatars.com/api/?name=#{first_name}+#{last_name}&background=f5f5f4&color=a8a29e"
     end
   end
+ end
 end
