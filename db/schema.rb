@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_01_23_183554) do
+ActiveRecord::Schema[8.1].define(version: 2026_02_04_105025) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -55,9 +55,15 @@ ActiveRecord::Schema[8.1].define(version: 2026_01_23_183554) do
   end
 
   create_table "admissions", force: :cascade do |t|
+    t.string "admission_number"
     t.datetime "created_at", null: false
-    t.string "status"
-    t.bigint "student_id", null: false
+    t.date "date_of_birth"
+    t.string "first_name"
+    t.string "gender"
+    t.string "last_name"
+    t.integer "level_id"
+    t.string "status", default: "pending", null: false
+    t.bigint "student_id"
     t.datetime "updated_at", null: false
     t.index ["student_id"], name: "index_admissions_on_student_id"
   end
