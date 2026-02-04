@@ -16,8 +16,14 @@ test:
   database: hope_school_test
 
 production:
- <<: *default
-  url: <%= ENV["DATABASE_URL"] %>
   adapter: postgresql
   encoding: unicode
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  # Use the full URL if Render provides it
+  url: <%= ENV['DATABASE_URL'] %>
+  # Or use individual variables if you prefer, 
+  # but use [] instead of .fetch to avoid the KeyError
+  database: <%= ENV['POSTGRES_DB'] %>
+  username: <%= ENV['POSTGRES_USER'] %>
+  password: <%= ENV['POSTGRES_PASSWORD'] %>
+  host: <%= ENV['POSTGRES_HOST'] %>
+  port: 5432
