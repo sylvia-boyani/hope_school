@@ -25,7 +25,7 @@ end
     if @admission.update(admission_params)
       redirect_to admin_admissions_path, notice: "Admission updated successfully."
     else
-      render :edit
+      render :edit, :status => :unprocessable_entity
     end
   end
 
@@ -47,7 +47,8 @@ end
     :admission_number, 
     :date_of_birth, 
     :gender, 
-    :level_id,       
+    :level_id,     
+    :status,  
     :class_room_id,  
     :photo
   )

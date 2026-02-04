@@ -1,0 +1,49 @@
+<div class="min-h-screen flex items-center justify-center bg-stone-100/50 px-4">
+  <%# Container that shrinks to the content %>
+  <div class="inline-block">
+    
+    <div class="text-center mb-6">
+      <h2 class="text-xl font-bold text-stone-800">Log in</h2>
+      <p class="text-xs font-medium text-stone-500 mt-1">Administrator Access Only</p>
+    </div>
+
+    <%# Highly Visible Card: Stronger shadow and border %>
+    <div class="bg-white p-10 shadow-xl shadow-stone-300/50 border border-stone-200 rounded-2xl">
+      <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), 
+          defaults: { 
+            input_html: { class: 'w-auto min-w-[240px] bg-white border-2 border-stone-200 px-4 py-2.5 rounded-lg text-sm text-stone-900 focus:border-stone-900 focus:ring-0 outline-none transition-all placeholder-stone-300' }, 
+            label_html: { class: 'block text-sm font-bold text-stone-700 mb-1.5' } 
+          }) do |f| %>
+        
+        <div class="space-y-5">
+          <%= f.input :email,
+                      required: false,
+                      autofocus: true,
+                      placeholder: "email@school.com",
+                      label: "Email",
+                      wrapper_html: { class: "mb-0" } %>
+
+          <%= f.input :password,
+                      required: false,
+                      placeholder: "password",
+                      label: "Password",
+                      wrapper_html: { class: "mb-0" } %>
+
+          <div class="flex items-center gap-2 py-1">
+            <%= f.check_box :remember_me, class: "h-4 w-4 text-stone-900 border-stone-300 rounded focus:ring-0" %>
+            <%= f.label :remember_me, "Remember me", class: "text-xs text-stone-600 font-medium cursor-pointer" %>
+          </div>
+
+          <div class="pt-2 flex justify-center">
+            <%= f.button :submit, "Log in", 
+                class: "w-full py-3 bg-stone-900 text-white text-sm font-bold rounded-lg hover:bg-stone-800 transition-all shadow-md cursor-pointer" %>
+          </div>
+        </div>
+      <% end %>
+
+      <div class="mt-8 pt-6 border-t border-stone-100 text-center">
+        <%= render "devise/shared/links" %>
+      </div>
+    </div>
+  </div>
+</div>
