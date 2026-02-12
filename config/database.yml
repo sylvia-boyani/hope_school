@@ -17,6 +17,13 @@ test:
   database: hope_school_test
 
 production:
-  <<: *default
-  # In production, Rails will prioritize DATABASE_URL if it exists
-  url: <%= ENV['DATABASE_URL'] %>
+  primary: &primary_production
+    adapter: postgresql
+    encoding: unicode
+    url: <%= ENV['DATABASE_URL'] %>
+    pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  
+  cable:
+    <<: *primary_production
+  cache:
+    <<: *primary_production
