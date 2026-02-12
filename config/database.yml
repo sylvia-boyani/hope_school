@@ -1,29 +1,22 @@
 default: &default
   adapter: postgresql
   encoding: unicode
+  # Adding defaults here prevents the KeyError crash
   host: <%= ENV.fetch("POSTGRES_HOST", "localhost") %>
   port: <%= ENV.fetch("POSTGRES_PORT", 5432) %>
-  database: <%= ENV.fetch("POSTGRES_DB") %>
-  username: <%= ENV.fetch("POSTGRES_USER") %>
-  password: <%= ENV.fetch("POSTGRES_PASSWORD") %>
+  database: <%= ENV.fetch("POSTGRES_DB", "hope_school_development") %>
+  username: <%= ENV.fetch("POSTGRES_USER", "postgres") %>
+  password: <%= ENV.fetch("POSTGRES_PASSWORD", "password") %>
   pool: <%= ENV.fetch("RAILS_MAX_THREADS", 5) %>
+
 development:
   <<: *default
-  database: hope_school_development
 
 test:
   <<: *default
   database: hope_school_test
 
 production:
-  adapter: postgresql
-  encoding: unicode
-  # Use the full URL if Render provides it
+  <<: *default
+  # In production, Rails will prioritize DATABASE_URL if it exists
   url: <%= ENV['DATABASE_URL'] %>
-  # Or use individual variables if you prefer, 
-  # but use [] instead of .fetch to avoid the KeyError
-  database: <%= ENV['POSTGRES_DB'] %>
-  username: <%= ENV['POSTGRES_USER'] %>
-  password: <%= ENV['POSTGRES_PASSWORD'] %>
-  host: <%= ENV['POSTGRES_HOST'] %>
-  port: 5432
