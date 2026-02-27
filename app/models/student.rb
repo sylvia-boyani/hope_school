@@ -10,18 +10,18 @@ class Student < ApplicationRecord
     "#{first_name} #{last_name}"
   end
 
+  # Safe thumbnail
   def photo_thumbnail
-    if photo.attached? && self.persisted?
-      # saver: { subsampling: 0 } keeps the colors sharp
-      if photo.variable?
-    photo.variant(
-      resize_to_fill: [400, 400], 
-      convert: 'jpg', 
-      saver: { quality: 80 }
-    ).processed
+    if photo.attached? && photo.variable?
+      # Only process variant if photo is attached and supports variants
+      photo.variant(
+        resize_to_fill: [400, 400],
+        convert: 'jpg',
+        saver: { quality: 80 }
+      )
     else
+      # Fallback to generated avatar URL if no photo
       "https://ui-avatars.com/api/?name=#{first_name}+#{last_name}&background=f5f5f4&color=a8a29e"
     end
   end
- end
 end
