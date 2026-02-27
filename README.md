@@ -93,7 +93,8 @@ admin.save!
 ## 7. Start Rails Server
 
 ```bash
-bin/rails s
+bin/dev
+This command uses foreman to start both your Rails server and the Tailwind/JavaScript compilers simultaneously.
 ```
 
 Visit:
