@@ -93,3 +93,22 @@
   </div>
 
 <% end %>
+
+<%# ... existing form_with ends here ... %>
+<% end %>
+
+<%# 7. Danger Zone / Delete Section %>
+<% unless @student.new_record? %>
+  <div class="mt-8 bg-red-50 p-8 rounded-[2.5rem] border border-red-100 flex items-center justify-between">
+    <div>
+      <h3 class="text-red-800 font-bold">Danger Zone</h3>
+      <p class="text-red-600 text-sm">Once you delete a student, there is no going back. Please be certain.</p>
+    </div>
+    
+    <%= button_to "Delete Student", 
+        admin_student_path(@student), 
+        method: :delete, 
+        form: { data: { confirm: "Are you absolutely sure? This action cannot be undone." } },
+        class: "bg-red-600 text-white px-6 py-3 rounded-xl font-bold hover:bg-red-700 transition-all shadow-sm" %>
+  </div>
+<% end %>
