@@ -7,7 +7,7 @@ class Admin::AssessmentsController < Admin::BaseController
     def new
       @assessment = Assessment.new
       # We need to fetch all three for the dropdowns
-      @students = Student.all
+      @students = Student.all 
       @subjects = Subject.all
       @levels = Level.all 
     end
