@@ -1,0 +1,10 @@
+# .erb-lint.yml
+---
+exclude:
+  - 'app/views/devise/**/*'
+  - 'bin/*'
+linters:
+  Rubocop:
+    enabled: true
+  SpaceAroundErbTag:
+    enabled: true

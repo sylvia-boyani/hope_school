@@ -5,16 +5,62 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <%# Ensure stylesheet name matches your manifest, usually "application" %>
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
-  <body class="bg-gray-100">
+  <body class="bg-gray-50 text-stone-900">
     <div class="flex min-h-screen">
+      <%# 1. Sidebar Navigation %>
       <%= render "admin/shared/sidebar" %>
 
-      <main class="flex-1 p-8">
-        <%= yield %>
+      <main class="flex-1 flex flex-col">
+        <%# 2. Top Navigation Bar %>
+        <header class="bg-white border-b border-stone-200 px-8 py-4 flex items-center justify-between sticky top-0 z-10">
+          <div>
+            <h2 class="text-sm font-medium text-stone-500">Hope School Management</h2>
+          </div>
+
+          <div class="flex items-center space-x-6">
+            <% if admin_signed_in? %>
+              <%# Admin Profile Info %>
+              <div class="flex items-center space-x-3 border-r border-stone-200 pr-6">
+                <div class="h-8 w-8 rounded-full bg-teal-100 flex items-center justify-center text-teal-700 font-bold text-xs uppercase">
+                  <%# Safely gets the first letter of the email %>
+                  <%= current_admin.email&.first %>
+                </div>
+                <span class="text-sm font-semibold text-stone-700"><%= current_admin.email %></span>
+              </div>
+
+              <%# Sign Out Button - Corrected for :admins scope %>
+              <%= link_to destroy_admin_session_path, 
+                  data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to sign out?" }, 
+                  class: "flex items-center space-x-2 text-stone-400 hover:text-red-600 transition-colors group" do %>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                </svg>
+                <span class="text-sm font-medium">Sign Out</span>
+              <% end %>
+            <% end %>
+          </div>
+        </header>
+
+        <%# 3. Flash Messages (Alerts) %>
+        <div class="px-8 pt-4">
+          <% flash.each do |type, message| %>
+            <%# Dynamic classes based on Devise/Rails flash types %>
+            <% bg_color = (type == 'notice' ? 'bg-green-50 text-green-700 border-green-100' : 'bg-red-50 text-red-700 border-red-100') %>
+            <div class="p-4 rounded-xl mb-4 border <%= bg_color %>">
+              <%= message %>
+            </div>
+          <% end %>
+        </div>
+
+        <%# 4. Main Page Content %>
+        <div class="p-8">
+          <%= yield %>
+        </div>
       </main>
     </div>
   </body>
