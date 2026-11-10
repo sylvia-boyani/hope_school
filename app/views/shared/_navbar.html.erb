@@ -1,53 +1,91 @@
-<nav data-controller="mobile-menu" class="bg-white/90 backdrop-blur-md shadow-sm sticky top-0 z-50 w-full">
+
+<nav data-controller="mobile-menu" class="bg-white/95 backdrop-blur-md shadow-sm sticky top-0 z-50 w-full border-b border-[#E5EBF2]">
   <div class="max-w-7xl mx-auto px-6 lg:px-12">
     <div class="flex items-center justify-between h-20">
+
+      <!-- School Logo / Name -->
       <div class="flex-shrink-0">
-        <%= link_to root_path, class: "text-2xl lg:text-3xl font-extrabold text-amber-800 tracking-tight" do %>
-          Hope<span class="text-amber-600">  School</span>
+        <%= link_to root_path, class: "text-2xl lg:text-3xl font-extrabold text-[#17365D] tracking-tight" do %>
+          Hope<span class="text-[#C83D42]"> School</span>
         <% end %>
+        <p class="text-[9px] sm:text-[10px] uppercase tracking-[2px] text-[#2874B8] font-semibold mt-0.5">
+          Educating for Life and Eternity
+        </p>
       </div>
 
-      <div class="hidden lg:flex items-center space-x-10">
-        <%= link_to "Home", root_path, class: "text-gray-700 hover:text-amber-700 font-semibold transition-colors" %>
-        <%= link_to "About", about_path, class: "text-gray-700 hover:text-amber-700 font-semibold transition-colors" %>
-        <%= link_to "Programs", programs_path, class: "text-gray-700 hover:text-amber-700 font-semibold transition-colors" %>
-        <%= link_to "Admissions", admissions_path, class: "text-gray-700 hover:text-amber-700 font-semibold transition-colors" %>
-        <%= link_to "Contact", contact_path, class: "text-gray-700 hover:text-amber-700 font-semibold transition-colors" %>
+      <!-- Desktop Navigation -->
+      <div class="hidden lg:flex items-center space-x-9">
+        <%= link_to "Home", root_path, class: "text-[#17365D] hover:text-[#2874B8] font-semibold transition-colors duration-300" %>
+
+        <%= link_to "About", about_path, class: "text-[#17365D] hover:text-[#2874B8] font-semibold transition-colors duration-300" %>
+
+        <%= link_to "Programs", programs_path, class: "text-[#17365D] hover:text-[#2874B8] font-semibold transition-colors duration-300" %>
+
+        <%= link_to "Admissions", admissions_path, class: "text-[#17365D] hover:text-[#2874B8] font-semibold transition-colors duration-300" %>
+
+        <%= link_to "Contact", contact_path, class: "text-[#17365D] hover:text-[#2874B8] font-semibold transition-colors duration-300" %>
       </div>
 
+      <!-- Desktop Apply Button -->
       <div class="hidden lg:block">
-        <%= link_to "Apply Now", admissions_path, class: "px-8 py-3 bg-amber-600 text-white rounded-full font-bold shadow-lg hover:bg-amber-700 hover:-translate-y-0.5 transition-all active:scale-95" %>
+        <%= link_to "Apply Now", admissions_path, class: "px-7 py-3 bg-[#C83D42] text-white rounded-full font-bold shadow-md hover:bg-[#A92F35] hover:-translate-y-0.5 transition-all duration-300 active:scale-95" %>
       </div>
 
+      <!-- Mobile Menu Button -->
       <div class="lg:hidden">
-        <button data-action="click->mobile-menu#toggle" class="relative p-2 text-amber-800 hover:bg-amber-50 rounded-xl transition">
+        <button
+          type="button"
+          data-action="click->mobile-menu#toggle"
+          aria-label="Toggle navigation menu"
+          class="relative p-2 text-[#17365D] hover:bg-[#F2F6FA] rounded-xl transition"
+        >
+          <svg
+            data-mobile-menu-target="openIcon"
+            class="h-8 w-8 block"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
 
-  <svg data-mobile-menu-target="openIcon"
-       class="h-8 w-8 block"
-       fill="none" viewBox="0 0 24 24" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-  </svg>
-
-  <svg data-mobile-menu-target="closeIcon"
-       class="hidden h-8 w-8"
-       fill="none" viewBox="0 0 24 24" stroke="currentColor">
-    <path stroke-linec href="#" class="block text-xl text-gray-800 font-bold">Programs</a>ap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-  </svg>
-</button>
+          <svg
+            data-mobile-menu-target="closeIcon"
+            class="hidden h-8 w-8"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
       </div>
+
     </div>
   </div>
 
-  <div class="hidden lg:hidden bg-white border-t border-amber-50" data-mobile-menu-target="menu">
-    <div class="px-6 py-8 space-y-4">
-      <%= link_to "Home", root_path, class: "block text-xl text-gray-800 font-bold" %>
-      <%= link_to "About", about_path, class: "block text-xl text-gray-800 font-bold" %>
-      <%= link_to "Programs", programs_path, class: "block text-xl text-gray-800 font-bold" %>
-      <%= link_to "Admissions", admissions_path, class: "block text-xl text-gray-800 font-bold" %>
-      <%= link_to "Contact", contact_path, class: "block text-xl text-gray-800 font-bold" %>
-      <a href="#" class="block text-center mt-6 px-6 py-4 bg-amber-600 text-white rounded-2xl font-bold shadow-md">
-        Apply Now
-      </a>
+  <!-- Mobile Navigation -->
+  <div
+    class="hidden lg:hidden bg-white border-t border-[#E5EBF2]"
+    data-mobile-menu-target="menu"
+  >
+    <div class="px-6 py-8 space-y-5">
+
+      <%= link_to "Home", root_path, class: "block text-lg text-[#17365D] hover:text-[#2874B8] font-semibold transition-colors" %>
+
+      <%= link_to "About", about_path, class: "block text-lg text-[#17365D] hover:text-[#2874B8] font-semibold transition-colors" %>
+
+      <%= link_to "Programs", programs_path, class: "block text-lg text-[#17365D] hover:text-[#2874B8] font-semibold transition-colors" %>
+
+      <%= link_to "Admissions", admissions_path, class: "block text-lg text-[#17365D] hover:text-[#2874B8] font-semibold transition-colors" %>
+
+      <%= link_to "Contact", contact_path, class: "block text-lg text-[#17365D] hover:text-[#2874B8] font-semibold transition-colors" %>
+
+      <%= link_to "Apply Now", admissions_path, class: "block text-center mt-6 px-6 py-4 bg-[#C83D42] hover:bg-[#A92F35] text-white rounded-xl font-bold shadow-md transition-all" %>
+
     </div>
   </div>
+
+  <!-- Orange Accent -->
+  <div class="h-[3px] bg-[#F2A23A]"></div>
 </nav>

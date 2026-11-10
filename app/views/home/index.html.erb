@@ -1,101 +1,308 @@
-<div class="antialiased text-gray-900 bg-white">
 
-  <section class="relative bg-gradient-to-br from-amber-50 via-orange-50 to-rose-50 min-h-screen flex items-center overflow-hidden py-16 lg:py-0">
-    <div class="hidden lg:block absolute top-0 right-0 w-1/3 h-full bg-amber-100/50 -skew-x-12 transform translate-x-20"></div>
+<div class="antialiased text-gray-800 bg-white">
+
+  <!-- HERO SECTION -->
+  <section class="relative bg-gradient-to-br from-[#F2F6FA] via-white to-[#E8F0F8] min-h-screen flex items-center overflow-hidden py-16 lg:py-0">
+
+    <div class="hidden lg:block absolute top-0 right-0 w-1/3 h-full bg-[#DCE8F4]/60 -skew-x-12 transform translate-x-20"></div>
 
     <div class="max-w-7xl mx-auto px-6 lg:px-12 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center relative z-10">
+
       <div class="col-span-1 lg:col-span-7 text-center lg:text-left">
-        <span class="inline-block px-4 py-2 bg-orange-100 text-orange-700 rounded-full text-xs lg:text-sm font-bold uppercase tracking-widest mb-6">
+
+        <span class="inline-block px-4 py-2 bg-[#FCEBED] text-[#C83D42] rounded-full text-xs lg:text-sm font-bold uppercase tracking-widest mb-6">
           Established 2009
         </span>
-        <h1 class="text-4xl md:text-5xl lg:text-7xl font-extrabold text-amber-900 leading-[1.1] mb-6 lg:mb-8">
-          Nurturing <span class="text-orange-600">Bright Futures</span> at Hope School
+
+        <h1 class="text-4xl md:text-5xl lg:text-7xl font-extrabold text-[#17365D] leading-[1.1] mb-6 lg:mb-8">
+          Nurturing <span class="text-[#C83D42]">Bright Futures</span> at Hope School
         </h1>
-        <p class="text-lg lg:text-xl text-amber-800 leading-relaxed max-w-xl mx-auto lg:mx-0 mb-8 lg:mb-12">
+
+        <p class="text-lg lg:text-xl text-[#526174] leading-relaxed max-w-xl mx-auto lg:mx-0 mb-8 lg:mb-12">
           A warm, supportive learning environment where children grow academically, socially, and morally through personalized attention.
         </p>
+
         <div class="flex flex-col sm:flex-row justify-center lg:justify-start gap-4 lg:gap-6">
-          <%= link_to "Admissions Open", admissions_path, class: "px-8 lg:px-10 py-4 lg:py-5 bg-amber-600 text-white rounded-2xl text-base lg:text-lg font-bold shadow-xl hover:bg-amber-700 hover:-translate-y-1 transition-all text-center" %>
-          <%= link_to "Learn More", programs_path, class: "px-8 lg:px-10 py-4 lg:py-5 border-2 border-amber-600 text-amber-700 rounded-2xl text-base lg:text-lg font-bold hover:bg-white transition-all text-center" %>
+
+          <%= link_to "Admissions Open", admissions_path, class: "px-8 lg:px-10 py-4 lg:py-5 bg-[#C83D42] text-white rounded-2xl text-base lg:text-lg font-bold shadow-lg hover:bg-[#A92F35] hover:-translate-y-1 transition-all text-center" %>
+
+          <%= link_to "Learn More", programs_path, class: "px-8 lg:px-10 py-4 lg:py-5 border-2 border-[#17365D] text-[#17365D] rounded-2xl text-base lg:text-lg font-bold hover:bg-[#F2F6FA] transition-all text-center" %>
+
         </div>
       </div>
 
+      <!-- HERO IMAGE -->
       <div class="col-span-1 lg:col-span-5 relative mt-10 lg:mt-0">
-       <div class="order-1 lg:order-2 aspect-[4/5] lg:aspect-square rounded-[3rem] overflow-hidden shadow-2xl transition-transform hover:scale-[1.02] duration-500">
-  <%= image_tag "tmain.jpeg",
-      alt: "Students engaged in CBC play-based learning",
-      class: "w-full h-full object-cover" %>
-</div>
-        <div class="absolute -bottom-4 left-4 lg:-bottom-6 lg:-left-12 bg-white p-5 lg:p-8 rounded-2xl lg:rounded-3xl shadow-2xl border border-amber-50">
-          <p class="text-3xl lg:text-5xl font-black text-amber-600 leading-none">100%</p>
-          <p class="text-[10px] lg:text-sm font-bold text-amber-900 mt-1 lg:mt-2 uppercase">Placement</p>
+
+        <div class="aspect-[4/5] lg:aspect-square rounded-[3rem] overflow-hidden shadow-2xl transition-transform hover:scale-[1.02] duration-500">
+
+          <%= image_tag "tmain.jpeg",
+              alt: "Students engaged in CBC play-based learning",
+              class: "w-full h-full object-cover" %>
+
+        </div>
+
+        <!-- PLACEMENT CARD -->
+        <div class="absolute -bottom-4 left-4 lg:-bottom-6 lg:-left-12 bg-white p-5 lg:p-8 rounded-2xl lg:rounded-3xl shadow-2xl border border-[#E5EBF2]">
+
+          <p class="text-3xl lg:text-5xl font-black text-[#2874B8] leading-none">
+            100%
+          </p>
+
+          <p class="text-[10px] lg:text-sm font-bold text-[#17365D] mt-1 lg:mt-2 uppercase">
+            Placement
+          </p>
+
+          <div class="w-10 h-1 bg-[#F2A23A] rounded-full mt-3"></div>
+
         </div>
       </div>
+
     </div>
   </section>
 
+
+  <!-- ABOUT SECTION -->
   <section class="py-20 lg:py-32 bg-white">
+
     <div class="max-w-7xl mx-auto px-6 lg:px-12 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
-      <div class="col-span-1 lg:col-span-5 bg-amber-50 h-[300px] lg:h-[500px] rounded-[30px] lg:rounded-[40px] border border-amber-100 flex flex-col items-center justify-center p-8 lg:p-12 text-center order-2 lg:order-1">
-        <p class="text-7xl lg:text-9xl font-black text-amber-200 leading-none">15+</p>
-        <p class="text-xl lg:text-3xl font-bold text-amber-900 -mt-2 lg:-mt-4">Years of Excellence</p>
+
+      <!-- EXPERIENCE IMAGE CARD -->
+      <div class="col-span-1 lg:col-span-5 order-2 lg:order-1">
+
+        <div class="relative h-[350px] lg:h-[500px] rounded-[30px] lg:rounded-[40px] overflow-hidden shadow-xl group">
+
+          <!-- Background Image -->
+          <%= image_tag "t1.jpeg",
+              alt: "A Hope School teacher guiding learners through a reading activity",
+              class: "absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" %>
+
+          <!-- Elegant Image Overlay -->
+          <div class="absolute inset-0 bg-gradient-to-t from-[#102B4C]/90 via-[#17365D]/20 to-transparent"></div>
+
+          <!-- Experience Content -->
+          <div class="absolute inset-0 flex flex-col items-center justify-center text-center p-8 lg:p-12">
+
+            <span class="text-white/90 uppercase tracking-[4px] text-xs lg:text-sm font-bold mb-5">
+              Our Journey
+            </span>
+
+            <p class="text-7xl lg:text-9xl font-black text-white leading-none drop-shadow-lg">
+              15+
+            </p>
+
+            <p class="text-xl lg:text-3xl font-bold text-white mt-4">
+              Years of Excellence
+            </p>
+
+            <div class="w-16 h-1.5 bg-[#F2A23A] rounded-full mt-6"></div>
+
+            <p class="text-white/90 text-sm lg:text-base mt-6 max-w-xs leading-relaxed">
+              Inspiring young minds, nurturing potential and building brighter futures.
+            </p>
+
+          </div>
+
+          <!-- Decorative Corner Accent -->
+          <div class="absolute top-6 right-6 w-12 h-12 border-t-2 border-r-2 border-white/60 rounded-tr-2xl"></div>
+
+        </div>
+
       </div>
 
+      <!-- ABOUT TEXT -->
       <div class="col-span-1 lg:col-span-7 order-1 lg:order-2 text-center lg:text-left">
-        <h2 class="text-3xl lg:text-5xl font-bold text-amber-900 mb-6">Who We Are</h2>
-        <div class="w-20 h-1.5 lg:w-24 lg:h-2 bg-orange-400 rounded-full mb-8 mx-auto lg:mx-0"></div>
-        <div class="space-y-4 lg:space-y-6 text-lg lg:text-xl text-gray-600 leading-relaxed">
+
+        <span class="text-[#C83D42] uppercase tracking-[3px] text-sm font-bold">
+          Discover Hope School
+        </span>
+
+        <h2 class="text-3xl lg:text-5xl font-bold text-[#17365D] mt-4 mb-6">
+          Who We Are
+        </h2>
+
+        <div class="w-20 h-1.5 lg:w-24 lg:h-2 bg-[#C83D42] rounded-full mb-8 mx-auto lg:mx-0"></div>
+
+        <div class="space-y-4 lg:space-y-6 text-lg lg:text-xl text-[#526174] leading-relaxed">
+
           <p>
             Hope School is dedicated to nurturing the whole child. We combine academic
             excellence with character development in a safe and caring environment.
           </p>
+
           <p>
             Our experienced teachers, modern facilities, and strong values help
             learners discover their potential and build confidence for the future.
           </p>
+
         </div>
+
+        <div class="mt-8 flex flex-wrap justify-center lg:justify-start gap-3">
+
+          <span class="px-5 py-3 bg-[#F2F6FA] text-[#17365D] rounded-full text-sm font-semibold">
+            Academic Growth
+          </span>
+
+          <span class="px-5 py-3 bg-[#FCEBED] text-[#C83D42] rounded-full text-sm font-semibold">
+            Character Development
+          </span>
+
+          <span class="px-5 py-3 bg-[#FFF5E6] text-[#A66A16] rounded-full text-sm font-semibold">
+            Holistic Learning
+          </span>
+
+        </div>
+
       </div>
+
     </div>
   </section>
 
-  <section class="py-20 lg:py-32 bg-orange-50">
+
+  <!-- PROGRAMS SECTION -->
+  <section class="py-20 lg:py-32 bg-[#F2F6FA]">
+
     <div class="max-w-7xl mx-auto px-6 lg:px-12">
+
       <div class="text-center mb-12 lg:mb-20">
-        <h2 class="text-3xl lg:text-5xl font-bold text-amber-900">Our Specialized Programs</h2>
-        <p class="text-amber-800 mt-4 text-lg lg:text-xl">A curriculum designed for every stage</p>
+
+        <span class="text-[#C83D42] uppercase tracking-[3px] text-sm font-bold">
+          Learning for every stage
+        </span>
+
+        <h2 class="text-3xl lg:text-5xl font-bold text-[#17365D] mt-4">
+          Our Specialized Programs
+        </h2>
+
+        <p class="text-[#526174] mt-4 text-lg lg:text-xl">
+          A curriculum designed for every stage
+        </p>
+
+        <div class="w-20 h-1.5 bg-[#F2A23A] rounded-full mx-auto mt-6"></div>
+
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
-        <div class="group bg-white p-8 lg:p-10 rounded-[24px] lg:rounded-[32px] shadow-sm hover:shadow-2xl hover:-translate-y-3 transition-all duration-300 border border-transparent hover:border-amber-200">
-          <div class="w-16 h-16 lg:w-20 lg:h-20 bg-amber-100 rounded-2xl mb-6 lg:mb-8 flex items-center justify-center text-2xl lg:text-3xl group-hover:bg-amber-600 group-hover:scale-110 transition-all duration-300">
+
+        <!-- EARLY CHILDHOOD -->
+        <div class="group bg-white p-8 lg:p-10 rounded-[24px] lg:rounded-[32px] shadow-sm hover:shadow-2xl hover:-translate-y-3 transition-all duration-300 border border-[#E5EBF2] hover:border-[#2874B8]">
+
+          <div class="w-16 h-16 lg:w-20 lg:h-20 bg-[#E8F0F8] rounded-2xl mb-6 lg:mb-8 flex items-center justify-center text-2xl lg:text-3xl group-hover:bg-[#2874B8] group-hover:scale-110 transition-all duration-300">
             🎨
           </div>
-          <h3 class="text-xl lg:text-2xl font-bold text-amber-900 mb-4">Early Childhood</h3>
-          <p class="text-gray-600 text-base lg:text-lg leading-relaxed">
+
+          <h3 class="text-xl lg:text-2xl font-bold text-[#17365D] mb-4">
+            Early Childhood
+          </h3>
+
+          <p class="text-[#526174] text-base lg:text-lg leading-relaxed">
             A gentle, playful introduction to learning that builds curiosity and confidence through sensory exploration.
           </p>
+
+          <div class="w-10 h-1 bg-[#F2A23A] rounded-full mt-6 group-hover:w-16 transition-all duration-300"></div>
+
         </div>
 
-        <div class="group bg-white p-8 lg:p-10 rounded-[24px] lg:rounded-[32px] shadow-sm hover:shadow-2xl hover:-translate-y-3 transition-all duration-300 border border-transparent hover:border-amber-200">
-          <div class="w-16 h-16 lg:w-20 lg:h-20 bg-amber-100 rounded-2xl mb-6 lg:mb-8 flex items-center justify-center text-2xl lg:text-3xl group-hover:bg-amber-600 group-hover:scale-110 transition-all duration-300">
+
+        <!-- PRIMARY SCHOOL -->
+        <div class="group bg-white p-8 lg:p-10 rounded-[24px] lg:rounded-[32px] shadow-sm hover:shadow-2xl hover:-translate-y-3 transition-all duration-300 border border-[#E5EBF2] hover:border-[#2874B8]">
+
+          <div class="w-16 h-16 lg:w-20 lg:h-20 bg-[#E8F0F8] rounded-2xl mb-6 lg:mb-8 flex items-center justify-center text-2xl lg:text-3xl group-hover:bg-[#2874B8] group-hover:scale-110 transition-all duration-300">
             📚
           </div>
-          <h3 class="text-xl lg:text-2xl font-bold text-amber-900 mb-4">Primary School</h3>
-          <p class="text-gray-600 text-base lg:text-lg leading-relaxed">
+
+          <h3 class="text-xl lg:text-2xl font-bold text-[#17365D] mb-4">
+            Primary School
+          </h3>
+
+          <p class="text-[#526174] text-base lg:text-lg leading-relaxed">
             Strong academic foundations with an emphasis on creativity, critical thinking, and social collaboration.
           </p>
+
+          <div class="w-10 h-1 bg-[#F2A23A] rounded-full mt-6 group-hover:w-16 transition-all duration-300"></div>
+
         </div>
 
-        <div class="group bg-white p-8 lg:p-10 rounded-[24px] lg:rounded-[32px] shadow-sm hover:shadow-2xl hover:-translate-y-3 transition-all duration-300 border border-transparent hover:border-amber-200">
-          <div class="w-16 h-16 lg:w-20 lg:h-20 bg-amber-100 rounded-2xl mb-6 lg:mb-8 flex items-center justify-center text-2xl lg:text-3xl group-hover:bg-amber-600 group-hover:scale-110 transition-all duration-300">
+
+        <!-- JUNIOR SECONDARY -->
+        <div class="group bg-white p-8 lg:p-10 rounded-[24px] lg:rounded-[32px] shadow-sm hover:shadow-2xl hover:-translate-y-3 transition-all duration-300 border border-[#E5EBF2] hover:border-[#2874B8]">
+
+          <div class="w-16 h-16 lg:w-20 lg:h-20 bg-[#E8F0F8] rounded-2xl mb-6 lg:mb-8 flex items-center justify-center text-2xl lg:text-3xl group-hover:bg-[#2874B8] group-hover:scale-110 transition-all duration-300">
             🔬
           </div>
-          <h3 class="text-xl lg:text-2xl font-bold text-amber-900 mb-4">Junior Secondary</h3>
-          <p class="text-gray-600 text-base lg:text-lg leading-relaxed">
+
+          <h3 class="text-xl lg:text-2xl font-bold text-[#17365D] mb-4">
+            Junior Secondary
+          </h3>
+
+          <p class="text-[#526174] text-base lg:text-lg leading-relaxed">
             Preparing learners for future success through advanced skills, self-discipline, and leadership values.
           </p>
+
+          <div class="w-10 h-1 bg-[#F2A23A] rounded-full mt-6 group-hover:w-16 transition-all duration-300"></div>
+
         </div>
+
       </div>
     </div>
+
   </section>
+
+
+  <!-- LIFE AT HOPE SCHOOL -->
+  <section class="py-20 lg:py-32 bg-white">
+
+    <div class="max-w-7xl mx-auto px-6 lg:px-12">
+
+      <!-- Heading -->
+      <div class="text-center max-w-3xl mx-auto mb-14 lg:mb-16">
+
+        <span class="text-[#C83D42] uppercase tracking-[3px] text-sm font-bold">
+          Our School Community
+        </span>
+
+        <h2 class="text-3xl lg:text-5xl font-bold text-[#17365D] mt-4">
+          Life at Hope School
+        </h2>
+
+        <div class="w-20 h-1.5 bg-[#F2A23A] rounded-full mx-auto mt-6"></div>
+
+        <p class="text-[#526174] text-lg lg:text-xl leading-relaxed mt-6">
+          Every day brings new opportunities to learn, explore, create
+          and grow. Take a glimpse into the experiences that make
+          Hope School a special place to belong.
+        </p>
+
+      </div>
+
+      <!-- Masonry Gallery -->
+      <div class="columns-1 sm:columns-2 lg:columns-3 gap-5">
+
+        <% (1..22).each do |number| %>
+
+          <div class="break-inside-avoid mb-5 group relative overflow-hidden rounded-2xl shadow-sm hover:shadow-xl transition-all duration-500">
+
+            <%= image_tag "t#{number}.jpeg",
+                alt: "Hope School learners and school activities - photograph #{number}",
+                loading: "lazy",
+                class: "w-full h-auto block rounded-2xl group-hover:scale-105 transition-transform duration-700" %>
+
+            <div class="absolute inset-x-0 bottom-0 p-5 pt-12 bg-gradient-to-t from-[#17365D]/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+
+              <p class="text-white text-sm font-semibold">
+                Life at Hope School
+              </p>
+
+            </div>
+
+          </div>
+
+        <% end %>
+
+      </div>
+
+    </div>
+
+  </section>
+
 </div>

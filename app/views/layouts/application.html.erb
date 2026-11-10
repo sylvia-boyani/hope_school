@@ -1,24 +1,35 @@
+
 <!DOCTYPE html>
 <html>
   <head>
     <title><%= content_for(:title) || "Hope School" %></title>
+
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="#17365D">
+
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= yield :head %>
 
     <link rel="icon" href="/icon.png" type="image/png">
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/icon.png">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
-    <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
+    <!-- Application Assets -->
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
-  <body class="bg-white">
+  <body class="bg-school-white font-body text-gray-800">
+
     <%= render "shared/navbar" %>
 
     <% if notice %>
@@ -33,17 +44,11 @@
       </div>
     <% end %>
 
-    <% if flash[:notice] %>
-      <div class="fixed top-24 left-1/2 -translate-x-1/2 z-[100] w-full max-w-md px-4">
-       <div class="bg-green-600 text-white p-4 rounded-2xl shadow-2xl text-center font-bold animate-bounce">
-         <%= flash[:notice] %>
-      </div>
-     </div>
-    <% end %>
-
-    <main>
+    <main class="min-h-screen">
       <%= yield %>
     </main>
+
     <%= render "layouts/footer" %>
+
   </body>
 </html>

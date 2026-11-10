@@ -1,1 +1,63 @@
+
 @import "tailwindcss";
+
+/* =================================
+   HOPE SCHOOL DESIGN SYSTEM
+================================= */
+
+@theme {
+  --color-school-navy: #17365D;
+  --color-school-blue: #2874B8;
+  --color-school-red: #C83D42;
+  --color-school-orange: #F2A23A;
+  --color-school-light: #F2F6FA;
+  --color-school-white: #FFFFFF;
+
+  --font-heading: "Poppins", sans-serif;
+  --font-body: "Poppins", sans-serif;
+}
+
+/* Global styles */
+
+:root {
+  --school-navy: #17365D;
+  --school-blue: #2874B8;
+  --school-red: #C83D42;
+  --school-orange: #F2A23A;
+  --school-light: #F2F6FA;
+  --school-white: #FFFFFF;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--school-white);
+  color: #263445;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Headings */
+
+h1,
+h2,
+h3,
+h4 {
+  color: var(--school-navy);
+  font-family: "Poppins", sans-serif;
+}
+
+/* Links */
+
+a {
+  transition: color 0.3s ease;
+}
+
+/* Selection */
+
+::selection {
+  background: var(--school-blue);
+  color: white;
+}
