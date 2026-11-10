@@ -25,7 +25,7 @@ end
     if @admission.update(admission_params)
       redirect_to admin_admissions_path, notice: "Admission updated successfully."
     else
-      render :edit, :status => :unprocessable_entity
+      render :edit, status: :unprocessable_entity
     end
   end
 
@@ -42,14 +42,14 @@ end
 
  def admission_params
   params.require(:admission).permit(
-    :first_name, 
-    :last_name, 
-    :admission_number, 
-    :date_of_birth, 
-    :gender, 
-    :level_id,     
-    :status,  
-    :class_room_id,  
+    :first_name,
+    :last_name,
+    :admission_number,
+    :date_of_birth,
+    :gender,
+    :level_id,
+    :status,
+    :class_room_id,
     :photo
   )
 end

@@ -1,5 +1,4 @@
 class Admin::AssessmentsController < Admin::BaseController
-  
     def index
       @assessments = Assessment.includes(:student, :subject).order(assessment_date: :desc)
     end
@@ -7,9 +6,9 @@ class Admin::AssessmentsController < Admin::BaseController
     def new
       @assessment = Assessment.new
       # We need to fetch all three for the dropdowns
-      @students = Student.all 
+      @students = Student.all
       @subjects = Subject.all
-      @levels = Level.all 
+      @levels = Level.all
     end
 
     def create
@@ -25,7 +24,7 @@ class Admin::AssessmentsController < Admin::BaseController
       end
     end
 
-    
+
     private
 
     def load_form_data

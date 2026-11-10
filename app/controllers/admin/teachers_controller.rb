@@ -46,7 +46,7 @@ end
 def teacher_params
   params.require(:teacher).permit(
     :first_name, :last_name, :email, :phone, :bio,
-    teaching_assignments_attributes: [:id, :subject_id, :class_room_id, :_destroy]
+    teaching_assignments_attributes: [ :id, :subject_id, :class_room_id, :_destroy ]
   )
 end
 end

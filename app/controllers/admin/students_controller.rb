@@ -6,7 +6,7 @@ class Admin::StudentsController < Admin::BaseController
   end
 
   def show
-  end 
+  end
 
   def new
     @student = Student.new
@@ -36,7 +36,7 @@ class Admin::StudentsController < Admin::BaseController
     @student.destroy
     redirect_to admin_students_path, notice: "Student removed from registry."
   end
-  
+
   private
 
   def set_student
@@ -45,11 +45,11 @@ class Admin::StudentsController < Admin::BaseController
 
   def student_params
   params.require(:student).permit(
-    :first_name, 
-    :last_name, 
-    :admission_number, 
-    :date_of_birth, 
-    :gender, 
+    :first_name,
+    :last_name,
+    :admission_number,
+    :date_of_birth,
+    :gender,
     # :level_id,
     :class_room_id,
     :photo

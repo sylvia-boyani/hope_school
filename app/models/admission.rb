@@ -1,5 +1,5 @@
 class Admission < ApplicationRecord
-  belongs_to :student, optional: true 
+  belongs_to :student, optional: true
   belongs_to :level, optional: true
   belongs_to :class_room, optional: true
   has_one_attached :photo
@@ -10,7 +10,7 @@ class Admission < ApplicationRecord
   # Automatically set status before validation on new records
   before_validation :assign_default_status, on: :create
   validates :first_name, :last_name, :admission_number, presence: true
-  
+
   def student_name
     "#{first_name} #{last_name}".strip
   end
@@ -27,9 +27,9 @@ class Admission < ApplicationRecord
 
   def photo_thumbnail
     return nil unless photo.attached?
-    
+
     if photo.variable?
-      photo.variant(resize_to_fill: [400, 400], convert: 'jpg', saver: { quality: 80 }).processed
+      photo.variant(resize_to_fill: [ 400, 400 ], convert: "jpg", saver: { quality: 80 }).processed
     else
       photo
     end
@@ -38,6 +38,6 @@ class Admission < ApplicationRecord
   private
 
   def assign_default_status
-    self.status = 'pending' if status.blank?
+    self.status = "pending" if status.blank?
   end
 end

@@ -5,10 +5,10 @@ class TeachingAssignment < ApplicationRecord
 
   # CHANGE THIS: Validate the association object, not the _id
   validates :teacher, :class_room, :subject, presence: true
-  
+
   # Update your uniqueness validation to use the object as well
-  validates :teacher, uniqueness: { 
-    scope: [:class_room_id, :subject_id], 
-    message: "is already assigned to this subject in this class" 
+  validates :teacher, uniqueness: {
+    scope: [ :class_room_id, :subject_id ],
+    message: "is already assigned to this subject in this class"
   }
 end

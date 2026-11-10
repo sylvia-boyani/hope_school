@@ -5,12 +5,12 @@ class Admin::DashboardController < Admin::BaseController
   @class_rooms_count = ClassRoom.count
   @levels_count = Level.count
   @subjects_count = Subject.count
-  @pending_admissions = Admission.where(status: 'pending').count
-  
+  @pending_admissions = Admission.where(status: "pending").count
+
   # New Stat for CBC tracking
   @total_assessments = Assessment.count
-  
-  # Recent Admissions 
+
+  # Recent Admissions
   @recent_admissions = Admission.order(created_at: :desc).limit(5)
 end
 end

@@ -35,7 +35,7 @@ puts "---------------------"
 
 puts "Seeding ClassRooms (Red & Blue streams)..."
 
-streams = ["Red", "Blue"]
+streams = [ "Red", "Blue" ]
 
 Level.find_each do |level|
   streams.each do |stream|

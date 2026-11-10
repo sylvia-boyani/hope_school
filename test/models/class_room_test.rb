@@ -25,8 +25,8 @@ class ClassRoomTest < ActiveSupport::TestCase
     assert_includes @class_room.teachers, teachers(:teacher_one)
   end
 
-  test "invalid without stream" do 
-    @class_room.stream = nil       
+  test "invalid without stream" do
+    @class_room.stream = nil
     assert_not @class_room.valid?
   end
 end

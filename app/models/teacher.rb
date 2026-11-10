@@ -4,7 +4,7 @@ class Teacher < ApplicationRecord
   has_many :class_rooms, through: :teaching_assignments
 
   accepts_nested_attributes_for :teaching_assignments, allow_destroy: true, reject_if: :all_blank
-  
+
   validates :first_name, :last_name, :email, presence: true
 
   def name

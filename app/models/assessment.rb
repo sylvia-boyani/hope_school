@@ -5,10 +5,10 @@ class Assessment < ApplicationRecord
 
   # This is for your views/dropdowns
   PERFORMANCE_LEVELS = [
-    ['Exceeding Expectations (EE)', 'EE'],
-    ['Meeting Expectations (ME)', 'ME'],
-    ['Approaching Expectations (AE)', 'AE'],
-    ['Below Expectations (BE)', 'BE']
+    [ "Exceeding Expectations (EE)", "EE" ],
+    [ "Meeting Expectations (ME)", "ME" ],
+    [ "Approaching Expectations (AE)", "AE" ],
+    [ "Below Expectations (BE)", "BE" ]
   ]
 
   # This extracts just the codes: ["EE", "ME", "AE", "BE"]

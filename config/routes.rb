@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   # 1. Devise Routes
   # devise_for :users
   # Moving this here and ensuring we handle the "skip" properly in the views
-  devise_for :admins, skip: [:registrations]
+  devise_for :admins, skip: [ :registrations ]
 
   # 2. Admin Namespace
   namespace :admin do

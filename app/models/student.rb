@@ -15,8 +15,8 @@ class Student < ApplicationRecord
     if photo.attached? && photo.variable?
       # Only process variant if photo is attached and supports variants
       photo.variant(
-        resize_to_fill: [400, 400],
-        convert: 'jpg',
+        resize_to_fill: [ 400, 400 ],
+        convert: "jpg",
         saver: { quality: 80 }
       )
     else
