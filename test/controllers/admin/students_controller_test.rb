@@ -2,17 +2,17 @@ require "test_helper"
 
 class Admin::StudentsControllerTest < ActionDispatch::IntegrationTest
   test "should get index" do
-    get admin_students_index_url
+    get admin_students_url
     assert_response :success
   end
 
   test "should get new" do
-    get admin_students_new_url
+    get new_admin_student_url
     assert_response :success
   end
 
   test "should get edit" do
-    get admin_students_edit_url
+    get edit_admin_student_url
     assert_response :success
   end
 end
